@@ -39,7 +39,7 @@
             100% { transform: translateY(110vh) translateX(25px) rotate(360deg); }
         }
 
-        /* --- Navbar & Dropdown --- */
+        /* --- Navbar --- */
         nav {
             width: 100%;
             padding: 10px 50px;
@@ -53,14 +53,19 @@
             z-index: 100;
         }
 
-        .left-nav { display: flex; align-items: center; gap: 20px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem; }
+        .logo img { height: 40px; width: 40px; border-radius: 50%; }
+
+        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: #fff; }
 
         .dropdown { position: relative; display: inline-block; }
         .dropbtn {
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            padding: 8px 15px;
-            font-size: 0.9rem;
+            padding: 6px 12px;
+            font-size: 0.85rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             cursor: pointer;
@@ -80,6 +85,8 @@
             border-radius: 8px;
             overflow: hidden;
             margin-top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .dropdown-content a {
             color: #ccc;
@@ -88,16 +95,11 @@
             display: block;
             font-size: 0.85rem;
             transition: 0.3s;
+            text-align: left;
         }
         .dropdown-content a:hover { background-color: #161b22; color: #fff; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem; }
-        .logo img { height: 40px; width: 40px; border-radius: 50%; }
-
-        .nav-links { display: flex; gap: 25px; list-style: none; }
-        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: #fff; }
         .nav-btns { display: flex; gap: 15px; }
 
         /* --- Hero Section --- */
@@ -214,6 +216,58 @@
             cursor: pointer; font-weight: bold; transition: 0.3s; background: rgba(255,255,255,0.05); color: #fff;
         }
         .card-btn.active { background: #a371f7; border: none; }
+
+        /* --- Ready to Launch Section --- */
+        .launch-section {
+            width: 100%;
+            max-width: 1100px;
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.8) 0%, rgba(13, 17, 23, 0.9) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 80px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+        }
+        .launch-left { max-width: 600px; }
+        .ready-badge {
+            background: rgba(58, 123, 213, 0.2);
+            color: #3a7bd5;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .launch-left h2 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
+        .launch-left h2 span { color: #2188ff; }
+        .launch-left p { color: #8b949e; font-size: 1rem; margin-bottom: 30px; }
+        
+        .launch-stats { display: flex; gap: 40px; margin-bottom: 40px; }
+        .stat-item h4 { font-size: 1.5rem; color: #fff; }
+        .stat-item p { font-size: 0.8rem; color: #8b949e; margin-bottom: 0; }
+
+        .launch-btns { display: flex; gap: 15px; }
+        .btn-launch { background: #2188ff; padding: 12px 25px; border-radius: 8px; font-weight: bold; text-decoration: none; color: #fff; }
+        .btn-discord { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 8px; font-weight: bold; text-decoration: none; color: #fff; }
+
+        .launch-right { display: flex; flex-direction: column; gap: 15px; }
+        .feature-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 280px;
+        }
+        .feature-box i { font-size: 1.2rem; color: #3fb950; }
+        .feature-text h5 { font-size: 0.9rem; margin: 0; }
+        .feature-text p { font-size: 0.75rem; color: #8b949e; margin: 0; }
     </style>
 </head>
 <body>
@@ -221,8 +275,14 @@
     <div class="background"></div>
 
     <nav>
-        <div class="left-nav">
-            <div class="dropdown">
+        <div class="logo">
+            <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg?ex=69b20433&is=69b0b2b3&hm=e1dcf4b1965e75718b8dc2a699839f1a49e5c653976a35c538af822e7a7ec2c9&" alt="CoreMMC Logo">
+            ⚡ CoreMMC
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Features</a></li>
+            <li class="dropdown">
                 <button class="dropbtn">Panels <i class="fas fa-caret-down"></i></button>
                 <div class="dropdown-content">
                     <a href="https://supergmt95.github.io/minecraft-hosting/"><i class="fas fa-home"></i> Home Panel</a>
@@ -231,19 +291,11 @@
                     <a href="#"><i class="fas fa-cube"></i> Minecraft hosting Panel</a>
                     <a href="https://discord.gg/SvQSv5E53"><i class="fas fa-headset"></i> Contact support</a>
                 </div>
-            </div>
-
-            <div class="logo">
-                <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg?ex=69b20433&is=69b0b2b3&hm=e1dcf4b1965e75718b8dc2a699839f1a49e5c653976a35c538af822e7a7ec2c9&" alt="CoreMMC Logo">
-                ⚡ CoreMMC
-            </div>
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="#">Features</a></li>
+            </li>
             <li><a href="#">Hosting</a></li>
             <li><a href="#">Status</a></li>
         </ul>
+
         <div class="nav-btns">
             <button style="background: #5865f2; border: none; padding: 8px 15px; border-radius: 5px; color: #fff; font-weight: bold;">Get Started</button>
         </div>
@@ -254,7 +306,7 @@
         <h1>Premium Hosting<br><span>Built for Performance</span></h1>
         <p class="hero-desc">VPS • Game • Bot • Web Hosting<br>Smooth Performance • Zero Lag • Pure Stability</p>
         <div class="hero-btns">
-            <a href="https://discord.gg/SvQSv5E53" class="btn-primary">⚡ Back to Home Page</a>
+            <a href="https://supergmt95.github.io/minecraft-hosting/" class="btn-primary">⚡ Back to Home Page</a>
             <a href="https://discord.gg/SvQSv5E53" class="btn-secondary">Contact Support</a>
         </div>
     </header>
@@ -337,6 +389,88 @@
         </div>
     </section>
 
+    <section class="launch-section">
+        <div class="launch-left">
+            <div class="ready-badge">🚀 READY TO LAUNCH</div>
+            <h2>Deploy Your <span>Infrastructure</span><br>in 30 Seconds</h2>
+            <p>Powering fast, reliable infrastructure for modern developers and growing communities.</p>
+            
+            <div class="launch-stats">
+                <div class="stat-item">
+                    <h4>99.9%</h4>
+                    <p>UPTIME SLA</p>
+                </div>
+                <div class="stat-item">
+                    <h4>&lt;20ms</h4>
+                    <p>INDIA LATENCY</p>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <p>NETWORK MONITORING</p>
+                </div>
+            </div>
+
+            <div class="launch-btns">
+                <a href="#" class="btn-launch">🚀 DEPLOY NOW</a>
+                <a href="https://discord.gg/SvQSv5E53" class="btn-discord"><i class="fab fa-discord"></i> JOIN DISCORD</a>
+            </div>
+        </div>
+
+        <div class="launch-right">
+            <div class="feature-box">
+                <i class="fas fa-bolt"></i>
+                <div class="feature-text">
+                    <h5>Instant Deployment</h5>
+                    <p>Live in under 30 seconds</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-shield-virus"></i>
+                <div class="feature-text">
+                    <h5>CoreMMCShield Protection</h5>
+                    <p>Tbps+ DDoS mitigation</p>
+                </div>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-headset"></i>
+                <div class="feature-text">
+                    <h5>24/7 Discord Support</h5>
+                    <p>Real humans, fast replies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="width: 100%; max-width: 1100px; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px;">
+            <div style="max-width: 300px;">
+                <h3 style="margin-bottom: 15px;">⚡ CoreMMC</h3>
+                <p style="color: #8b949e; font-size: 0.9rem;">Enterprise-grade hosting for gamers and developers. Fast, reliable, and affordable.</p>
+            </div>
+            <div style="display: flex; gap: 60px;">
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 0.9rem;">Hosting</h4>
+                    <ul style="list-style: none; color: #8b949e; font-size: 0.85rem; line-height: 2;">
+                        <li>Minecraft Hosting</li>
+                        <li>VPS Hosting</li>
+                        <li>Web Hosting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px; font-size: 0.9rem;">Support</h4>
+                    <ul style="list-style: none; color: #8b949e; font-size: 0.85rem; line-height: 2;">
+                        <li>Contact Us</li>
+                        <li>Discord Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: #8b949e; font-size: 0.8rem; display: flex; justify-content: space-between;">
+            <p>© 2026 CoreMMC. All rights reserved.</p>
+            <p><span style="color: #3fb950;">●</span> All Systems Operational</p>
+        </div>
+    </footer>
+
     <script>
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -352,4 +486,3 @@
     </script>
 </body>
 </html>
-
