@@ -139,6 +139,47 @@
             color: white; text-decoration: none; text-align: center;
         }
 
+        /* --- Team Rolling Section (NEW) --- */
+        .team-slider-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 60px 0;
+            z-index: 2;
+            background: rgba(0,0,0,0.2);
+        }
+        .team-track {
+            display: flex;
+            width: calc(320px * 12); /* Adjusted for continuous loop */
+            animation: scroll 25s linear infinite;
+        }
+        .team-track:hover { animation-play-state: paused; }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-320px * 6)); }
+        }
+
+        .team-card {
+            width: 300px;
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 0 10px;
+            text-align: left;
+            flex-shrink: 0;
+        }
+        .stars { color: #ffb400; margin-bottom: 15px; font-size: 0.9rem; }
+        .quote { font-style: italic; color: #d1d5db; font-size: 0.95rem; margin-bottom: 20px; min-height: 60px; }
+        .member-info { display: flex; align-items: center; gap: 12px; }
+        .member-avatar { 
+            width: 45px; height: 45px; border-radius: 50%; 
+            background: #2188ff; display: flex; align-items: center; 
+            justify-content: center; font-weight: bold; font-size: 1.2rem;
+        }
+        .member-details h4 { font-size: 1rem; margin: 0; }
+        .member-details p { font-size: 0.8rem; color: #8b949e; margin: 0; }
+
         /* --- Global Network Section --- */
         .network-section {
             width: 100%;
@@ -276,7 +317,7 @@
 
     <nav>
         <div class="logo">
-            <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg?ex=69b20433&is=69b0b2b3&hm=e1dcf4b1965e75718b8dc2a699839f1a49e5c653976a35c538af822e7a7ec2c9&" alt="CoreMMC Logo">
+            <img src="https://cdn.discordapp.com/attachments/1457594773010518086/1480537990446190726/copilot_image_1761965106943.jpg" alt="CoreMMC Logo">
             ⚡ CoreMMC
         </div>
 
@@ -310,6 +351,89 @@
             <a href="https://discord.gg/SvQSv5E53" class="btn-secondary">Contact Support</a>
         </div>
     </header>
+
+    <section class="team-slider-container">
+        <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Our <span style="color: #2188ff;">Core Team</span> & Reviews</h2>
+        <div class="team-track">
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities for every user."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #a371f7;">S</div>
+                    <div class="member-details">
+                        <h4>SuperGMT95</h4>
+                        <p>Owner & Founder</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime and lightning fast deployment for all nodes."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #3fb950;">A</div>
+                    <div class="member-details">
+                        <h4>Abhay_Gamerz</h4>
+                        <p>Developer & Admin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Designing seamless user experiences. We make sure our panels are as beautiful as they are powerful."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #f85149;">M</div>
+                    <div class="member-details">
+                        <h4>Mehak</h4>
+                        <p>Developer & Support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Managing communities and ensuring a toxic-free environment. Here to help you grow your server!"</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #2188ff;">R</div>
+                    <div class="member-details">
+                        <h4>RovenYtsa</h4>
+                        <p>Staff Member</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"The infrastructure is solid. CoreMMC provides the most powerful nodes I've ever worked with."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #e3b341;">S</div>
+                    <div class="member-details">
+                        <h4>SuperGMT95</h4>
+                        <p>Lead Developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Best support team ever! Solving issues within minutes on Discord. Highly recommended."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #2188ff;">U</div>
+                    <div class="member-details">
+                        <h4>User Review</h4>
+                        <p>Verified Client</p>
+                    </div>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
+                <div class="member-info">
+                    <div class="member-avatar" style="background: #a371f7;">S</div>
+                    <div class="member-details">
+                        <h4>SuperGMT95</h4>
+                        <p>Owner</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="network-section">
         <div class="network-header">
