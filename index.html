@@ -39,7 +39,7 @@
             100% { transform: translateY(110vh) translateX(25px) rotate(360deg); }
         }
 
-        /* --- Navbar --- */
+        /* --- Navbar (Optimized for Mobile) --- */
         nav {
             width: 100%;
             padding: 10px 50px;
@@ -53,8 +53,25 @@
             z-index: 100;
         }
 
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; }
         .logo img { height: 40px; width: 40px; border-radius: 50%; }
+
+        /* Mobile Scrolling Menu CSS */
+        @media screen and (max-width: 768px) {
+            nav { padding: 10px 15px; flex-wrap: wrap; }
+            .nav-links { 
+                order: 3; 
+                width: 100%; 
+                overflow-x: auto; 
+                white-space: nowrap; 
+                display: block !important; 
+                padding: 10px 0;
+                scrollbar-width: none; /* Firefox */
+            }
+            .nav-links::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+            .nav-links li { display: inline-block; margin-right: 20px; }
+            .nav-btns { order: 2; }
+        }
 
         .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
@@ -102,119 +119,48 @@
 
         .nav-btns { display: flex; gap: 15px; }
 
+        /* --- Status Styling --- */
+        .status-dot { height: 10px; width: 10px; background-color: #3fb950; border-radius: 50%; display: inline-block; margin-right: 5px; box-shadow: 0 0 8px #3fb950; }
+
         /* --- Hero Section --- */
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            max-width: 900px;
-            z-index: 2;
-        }
-        .promo-badge {
-            background: rgba(163, 113, 247, 0.2);
-            border: 1px solid #a371f7;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #a371f7;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+        .hero { text-align: center; padding: 80px 20px; max-width: 900px; z-index: 2; }
+        .promo-badge { background: rgba(163, 113, 247, 0.2); border: 1px solid #a371f7; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; color: #a371f7; display: inline-block; margin-bottom: 20px; }
         .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; }
-        .hero h1 span {
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .hero h1 span { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-desc { color: #8b949e; margin: 20px 0; font-size: 1.1rem; }
         
         .hero-btns { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 30px; }
-        .btn-primary { 
-            background: linear-gradient(90deg, #3a7bd5, #00d2ff); 
-            width: 300px; padding: 15px; border-radius: 12px; font-weight: bold;
-            color: white; text-decoration: none; text-align: center;
-        }
-        .btn-secondary { 
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            width: 300px; padding: 15px; border-radius: 12px; font-weight: bold;
-            color: white; text-decoration: none; text-align: center;
-        }
+        .btn-primary { background: linear-gradient(90deg, #3a7bd5, #00d2ff); width: 300px; padding: 15px; border-radius: 12px; font-weight: bold; color: white; text-decoration: none; text-align: center; }
+        .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 300px; padding: 15px; border-radius: 12px; font-weight: bold; color: white; text-decoration: none; text-align: center; }
 
-        /* --- Team Rolling Section (NEW) --- */
-        .team-slider-container {
-            width: 100%;
-            overflow: hidden;
-            padding: 60px 0;
-            z-index: 2;
-            background: rgba(0,0,0,0.2);
-        }
-        .team-track {
-            display: flex;
-            width: calc(320px * 12); /* Adjusted for continuous loop */
-            animation: scroll 25s linear infinite;
-        }
+        /* --- Team Rolling Section --- */
+        .team-slider-container { width: 100%; overflow: hidden; padding: 60px 0; z-index: 2; background: rgba(0,0,0,0.2); }
+        .team-track { display: flex; width: calc(320px * 12); animation: scroll 25s linear infinite; }
         .team-track:hover { animation-play-state: paused; }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-320px * 6)); }
-        }
-
-        .team-card {
-            width: 300px;
-            background: rgba(22, 27, 34, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 0 10px;
-            text-align: left;
-            flex-shrink: 0;
-        }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-320px * 6)); } }
+        .team-card { width: 300px; background: rgba(22, 27, 34, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 25px; margin: 0 10px; text-align: left; flex-shrink: 0; }
         .stars { color: #ffb400; margin-bottom: 15px; font-size: 0.9rem; }
         .quote { font-style: italic; color: #d1d5db; font-size: 0.95rem; margin-bottom: 20px; min-height: 60px; }
         .member-info { display: flex; align-items: center; gap: 12px; }
-        .member-avatar { 
-            width: 45px; height: 45px; border-radius: 50%; 
-            background: #2188ff; display: flex; align-items: center; 
-            justify-content: center; font-weight: bold; font-size: 1.2rem;
-        }
+        .member-avatar { width: 45px; height: 45px; border-radius: 50%; background: #2188ff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; }
         .member-details h4 { font-size: 1rem; margin: 0; }
         .member-details p { font-size: 0.8rem; color: #8b949e; margin: 0; }
 
         /* --- Global Network Section --- */
-        .network-section {
-            width: 100%;
-            max-width: 1100px;
-            text-align: center;
-            padding: 80px 20px;
-            z-index: 2;
-        }
+        .network-section { width: 100%; max-width: 1100px; text-align: center; padding: 80px 20px; z-index: 2; }
         .network-header h2 { font-size: 2.5rem; }
         .network-header span { color: #2188ff; }
         .network-header p { color: #8b949e; margin: 15px auto; max-width: 700px; }
-
-        .location-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 50px;
-        }
-        .loc-card {
-            background: rgba(22, 27, 34, 0.6);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
+        .location-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 50px; }
+        .loc-card { background: rgba(22, 27, 34, 0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; text-align: center; }
         .loc-card img { width: 30px; margin-bottom: 10px; }
         .loc-name { font-weight: bold; display: block; margin-bottom: 5px; }
         .latency { font-size: 0.85rem; font-weight: bold; }
-        
         .lat-green { color: #3fb950; }
         .lat-blue { color: #2188ff; }
         .lat-purple { color: #a371f7; }
         .lat-pink { color: #f85149; }
         .lat-gray { color: #8b949e; }
-
         .globe-container { margin-top: 60px; display: flex; justify-content: center; }
         .globe-gif { width: 100%; max-width: 500px; filter: drop-shadow(0 0 30px rgba(33, 136, 255, 0.3)); }
 
@@ -222,90 +168,34 @@
         .hosting-section { max-width: 1100px; width: 100%; padding: 80px 20px; z-index: 2; }
         .section-header { margin-bottom: 40px; text-align: center; }
         .section-header h2 { font-size: 2.5rem; }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(22, 27, 34, 0.7);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            transition: 0.3s;
-        }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        .card { background: rgba(22, 27, 34, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; position: relative; transition: 0.3s; }
         .card:hover { transform: translateY(-10px); border-color: rgba(163, 113, 247, 0.5); }
         .popular { border: 2px solid #a371f7; }
-        .badge {
-            position: absolute; top: 15px; right: 15px;
-            background: #a371f7; font-size: 10px; padding: 4px 10px; border-radius: 20px;
-        }
-
+        .badge { position: absolute; top: 15px; right: 15px; background: #a371f7; font-size: 10px; padding: 4px 10px; border-radius: 20px; }
         .price { font-size: 1.1rem; margin: 20px 0; color: #8b949e; }
         .price span { font-size: 2.2rem; font-weight: bold; color: #fff; }
-
         .features { list-style: none; padding: 0; margin-bottom: 30px; }
         .features li { margin-bottom: 12px; font-size: 0.9rem; color: #d1d5db; display: flex; align-items: center; }
         .features i { margin-right: 12px; width: 20px; color: #58a6ff; }
-
-        .card-btn {
-            width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444;
-            cursor: pointer; font-weight: bold; transition: 0.3s; background: rgba(255,255,255,0.05); color: #fff;
-        }
+        .card-btn { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #444; cursor: pointer; font-weight: bold; transition: 0.3s; background: rgba(255,255,255,0.05); color: #fff; }
         .card-btn.active { background: #a371f7; border: none; }
 
         /* --- Ready to Launch Section --- */
-        .launch-section {
-            width: 100%;
-            max-width: 1100px;
-            background: linear-gradient(135deg, rgba(22, 27, 34, 0.8) 0%, rgba(13, 17, 23, 0.9) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 60px;
-            margin: 80px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-        }
+        .launch-section { width: 100%; max-width: 1100px; background: linear-gradient(135deg, rgba(22, 27, 34, 0.8) 0%, rgba(13, 17, 23, 0.9) 100%); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 60px; margin: 80px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 2; }
         .launch-left { max-width: 600px; }
-        .ready-badge {
-            background: rgba(58, 123, 213, 0.2);
-            color: #3a7bd5;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
+        .ready-badge { background: rgba(58, 123, 213, 0.2); color: #3a7bd5; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; display: inline-block; margin-bottom: 20px; }
         .launch-left h2 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px; }
         .launch-left h2 span { color: #2188ff; }
         .launch-left p { color: #8b949e; font-size: 1rem; margin-bottom: 30px; }
-        
         .launch-stats { display: flex; gap: 40px; margin-bottom: 40px; }
         .stat-item h4 { font-size: 1.5rem; color: #fff; }
         .stat-item p { font-size: 0.8rem; color: #8b949e; margin-bottom: 0; }
-
         .launch-btns { display: flex; gap: 15px; }
         .btn-launch { background: #2188ff; padding: 12px 25px; border-radius: 8px; font-weight: bold; text-decoration: none; color: #fff; }
         .btn-discord { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px 25px; border-radius: 8px; font-weight: bold; text-decoration: none; color: #fff; }
-
         .launch-right { display: flex; flex-direction: column; gap: 15px; }
-        .feature-box {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 15px 25px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            min-width: 280px;
-        }
+        .feature-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 15px 25px; border-radius: 12px; display: flex; align-items: center; gap: 15px; min-width: 280px; }
         .feature-box i { font-size: 1.2rem; color: #3fb950; }
         .feature-text h5 { font-size: 0.9rem; margin: 0; }
         .feature-text p { font-size: 0.75rem; color: #8b949e; margin: 0; }
@@ -333,8 +223,24 @@
                     <a href="https://discord.gg/SvQSv5E53"><i class="fas fa-headset"></i> Contact support</a>
                 </div>
             </li>
-            <li><a href="#">Hosting</a></li>
-            <li><a href="#">Status</a></li>
+            <li class="dropdown">
+                <button class="dropbtn">Hosting <i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="https://supergmt95.github.io/View-plans/"><i class="fas fa-cube"></i> Minecraft Hosting</a>
+                    <a href="#"><i class="fas fa-server"></i> VPS Hosting</a>
+                    <a href="#"><i class="fas fa-globe"></i> Web Hosting</a>
+                    <a href="#"><i class="fas fa-robot"></i> Bot Hosting</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropbtn">Status <i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#"><span class="status-dot"></span> Minecraft Node [Online]</a>
+                    <a href="#"><span class="status-dot"></span> VPS Node [Online]</a>
+                    <a href="#"><span class="status-dot"></span> Web Server [Online]</a>
+                    <a href="#"><span class="status-dot"></span> Bot Panel [Online]</a>
+                </div>
+            </li>
         </ul>
 
         <div class="nav-btns">
@@ -357,7 +263,7 @@
         <div class="team-track">
             <div class="team-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities for every user."</p>
+                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
                 <div class="member-info">
                     <div class="member-avatar" style="background: #a371f7;">S</div>
                     <div class="member-details">
@@ -368,7 +274,7 @@
             </div>
             <div class="team-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime and lightning fast deployment for all nodes."</p>
+                <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime for all CoreMMC nodes."</p>
                 <div class="member-info">
                     <div class="member-avatar" style="background: #3fb950;">A</div>
                     <div class="member-details">
@@ -379,45 +285,12 @@
             </div>
             <div class="team-card">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Designing seamless user experiences. We make sure our panels are as beautiful as they are powerful."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #f85149;">M</div>
-                    <div class="member-details">
-                        <h4>Mehak</h4>
-                        <p>Developer & Support</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Managing communities and ensuring a toxic-free environment. Here to help you grow your server!"</p>
+                <p class="quote">"Ensuring a toxic-free community and lightning fast support replies."</p>
                 <div class="member-info">
                     <div class="member-avatar" style="background: #2188ff;">R</div>
                     <div class="member-details">
                         <h4>RovenYtsa</h4>
                         <p>Staff Member</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"The infrastructure is solid. CoreMMC provides the most powerful nodes I've ever worked with."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #e3b341;">S</div>
-                    <div class="member-details">
-                        <h4>SuperGMT95</h4>
-                        <p>Lead Developer</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Best support team ever! Solving issues within minutes on Discord. Highly recommended."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #2188ff;">U</div>
-                    <div class="member-details">
-                        <h4>User Review</h4>
-                        <p>Verified Client</p>
                     </div>
                 </div>
             </div>
@@ -484,7 +357,7 @@
                     <li><i class="fas fa-bolt"></i> Instant Setup</li>
                     <li><i class="fas fa-shield-alt"></i> Dedicated IP Available</li>
                 </ul>
-                <button class="card-btn active">Launch Server</button>
+                <button class="card-btn active" onclick="location.href='https://supergmt95.github.io/View-plans/'">Launch Server</button>
             </div>
 
             <div class="card">
