@@ -258,55 +258,118 @@
         </div>
     </header>
 
+team-slider-container { 
+    width: 100%; 
+    overflow: hidden; 
+    padding: 60px 0; 
+    z-index: 2; 
+    background: rgba(0,0,0,0.2); 
+}
+
+.team-track { 
+    display: flex; 
+    width: max-content; /* Yeh important hai loop ke liye */
+    animation: scroll 30s linear infinite; 
+}
+
+.team-track:hover { 
+    animation-play-state: paused; 
+}
+
+@keyframes scroll { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } /* Yeh smoothly wapas start par le aayega */
+}
+
+.team-card { 
+    width: 300px; 
+    background: rgba(22, 27, 34, 0.8); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 15px; 
+    padding: 25px; 
+    margin: 0 10px; 
+    text-align: left; 
+    flex-shrink: 0; 
+}
     <section class="team-slider-container">
-        <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Our <span style="color: #2188ff;">Core Team</span> & Reviews</h2>
-        <div class="team-track">
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #a371f7;">S</div>
-                    <div class="member-details">
-                        <h4>SuperGMT95</h4>
-                        <p>Owner & Founder</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime for all CoreMMC nodes."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #3fb950;">A</div>
-                    <div class="member-details">
-                        <h4>Abhay_Gamerz</h4>
-                        <p>Developer & Admin</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Ensuring a toxic-free community and lightning fast support replies."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #2188ff;">R</div>
-                    <div class="member-details">
-                        <h4>RovenYtsa</h4>
-                        <p>Staff Member</p>
-                    </div>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
-                <div class="member-info">
-                    <div class="member-avatar" style="background: #a371f7;">S</div>
-                    <div class="member-details">
-                        <h4>SuperGMT95</h4>
-                        <p>Owner</p>
-                    </div>
-                </div>
+    <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Our <span style="color: #2188ff;">Core Team</span> & Reviews</h2>
+    <div class="team-track">
+        
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #a371f7;">S</div>
+                <div class="member-details"><h4>SuperGMT95</h4><p>Owner & Founder</p></div>
             </div>
         </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime for all CoreMMC nodes."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #3fb950;">A</div>
+                <div class="member-details"><h4>Abhay_Gamerz</h4><p>Developer & Admin</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"World's most powerful servers provided by CoreMMC."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #e44d26;">S</div>
+                <div class="member-details"><h4>spinnypiegamer</h4><p>Gamer</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Pyrox bhai OP (Goated). He helped me a lot. Honorable mention to Sarthak and Raj."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #f1c40f;">R</div>
+                <div class="member-details"><h4>rajveer09_</h4><p>Developer</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Building the future of lag-free hosting. Quality and performance are my top priorities."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #a371f7;">S</div>
+                <div class="member-details"><h4>SuperGMT95</h4><p>Owner & Founder</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Always optimizing the backend. Ensuring 99.9% uptime for all CoreMMC nodes."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #3fb950;">A</div>
+                <div class="member-details"><h4>Abhay_Gamerz</h4><p>Developer & Admin</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"World's most powerful servers provided by CoreMMC."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #e44d26;">S</div>
+                <div class="member-details"><h4>spinnypiegamer</h4><p>Gamer</p></div>
+            </div>
+        </div>
+
+        <div class="team-card">
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="quote">"Pyrox bhai OP (Goated). He helped me a lot. Honorable mention to Sarthak and Raj."</p>
+            <div class="member-info">
+                <div class="member-avatar" style="background: #f1c40f;">R</div>
+                <div class="member-details"><h4>rajveer09_</h4><p>Developer</p></div>
+            </div>
+        </div>
+
+    </div>
     </section>
+    
 
     <section class="network-section">
         <div class="network-header">
