@@ -337,6 +337,246 @@
     </div>
     </section>
     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreMMC Hosting | Premium Performance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Setup & Old Background */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            background: #050816; /* Aapka purana background color */
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .background { 
+            position: fixed; 
+            inset: -20px;
+            background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTg0d2ZyaXRlZGJqeXVmNG5ra2JocTZ2eno2OGp5YjhtZjhpeGNqcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JNySPj69tVEEaaqoa9/giphy.gif') center/cover; 
+            filter: blur(8px) brightness(0.4); 
+            z-index: -1; 
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links { display: flex; gap: 25px; list-style: none; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
+
+        /* --- NEW SECTIONS STYLING --- */
+        .container-section {
+            width: 100%;
+            max-width: 1100px;
+            padding: 80px 20px;
+            z-index: 2;
+        }
+
+        /* Why Choose Us Grid */
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover { border-color: #ff6a00; transform: translateY(-5px); }
+
+        .icon-box {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #ff8c00, #ff4e00);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* Deploy Infrastructure Box */
+        .deploy-container {
+            background: rgba(13, 17, 23, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-group { display: flex; gap: 40px; margin: 25px 0; }
+        .stat-box h4 { font-size: 1.5rem; }
+        .stat-box p { font-size: 0.8rem; color: #8b949e; }
+
+        .feature-list-small { display: flex; flex-direction: column; gap: 15px; }
+        .small-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 280px;
+        }
+
+        /* Rolling Reviews */
+        .review-slider { overflow: hidden; width: 100%; padding: 40px 0; }
+        .review-track { display: flex; width: max-content; animation: scroll 35s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .team-card {
+            width: 300px;
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 0 10px;
+        }
+
+        /* Buttons */
+        .btn-main { background: #2188ff; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .btn-alt { background: rgba(255,255,255,0.05); border: 1px solid #444; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; }
+
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+
+    <nav>
+        <div class="logo">⚡ CoreMMC</div>
+        <ul class="nav-links">
+            <li><a href="#">Hosting</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="#" class="btn-main" style="padding: 8px 15px;">Get Started</a></li>
+        </ul>
+    </nav>
+
+    <section class="container-section">
+        <div style="text-align: center;">
+            <h2 style="font-size: 2.5rem;">Why Choose <span style="color: #ff6a00;">Axon Cloud?</span></h2>
+            <p style="color: #8b949e; margin-top: 10px;">Cutting-edge technology meets exceptional service</p>
+        </div>
+
+        <div class="why-choose-grid">
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                <h3>Lightning Fast</h3>
+                <p style="color: #8b949e; margin-top: 10px;">High-performance servers with SSD storage and optimized configurations for maximum speed.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3>DDoS Protection</h3>
+                <p style="color: #8b949e; margin-top: 10px;">Enterprise-grade security with advanced DDoS mitigation to keep your services online.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p style="color: #8b949e; margin-top: 10px;">Expert support team available round the clock via Discord, email, and live chat.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-section">
+        <div class="deploy-container">
+            <div style="flex: 1; min-width: 300px;">
+                <span style="color: #3a7bd5; font-weight: bold; font-size: 0.8rem;">🚀 READY TO LAUNCH</span>
+                <h2 style="font-size: 2.5rem; margin-top: 15px;">Deploy Your <span style="color: #2188ff;">Infrastructure</span><br>in 30 Seconds</h2>
+                
+                <div class="stat-group">
+                    <div class="stat-box"><h4>99.9%</h4><p>UPTIME SLA</p></div>
+                    <div class="stat-box"><h4>&lt;20ms</h4><p>INDIA LATENCY</p></div>
+                    <div class="stat-box"><h4>24/7</h4><p>MONITORING</p></div>
+                </div>
+
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="#" class="btn-main">🚀 DEPLOY NOW</a>
+                    <a href="#" class="btn-alt"><i class="fab fa-discord"></i> JOIN DISCORD</a>
+                </div>
+            </div>
+
+            <div class="feature-list-small">
+                <div class="small-item">
+                    <i class="fas fa-bolt" style="color: #3fb950;"></i>
+                    <div><h5 style="margin:0;">Instant Deployment</h5><p style="font-size: 0.7rem; color: #8b949e;">Live in under 30 seconds</p></div>
+                </div>
+                <div class="small-item">
+                    <i class="fas fa-shield-virus" style="color: #3fb950;"></i>
+                    <div><h5 style="margin:0;">CoreMMCShield Protection</h5><p style="font-size: 0.7rem; color: #8b949e;">Tbps+ DDoS mitigation</p></div>
+                </div>
+                <div class="small-item">
+                    <i class="fas fa-headset" style="color: #3fb950;"></i>
+                    <div><h5 style="margin:0;">24/7 Discord Support</h5><p style="font-size: 0.7rem; color: #8b949e;">Real humans, fast replies</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="review-slider">
+        <h2 style="text-align: center; margin-bottom: 30px;">What Our <span style="color: #2188ff;">Users Say</span></h2>
+        <div class="review-track">
+            <div class="team-card">
+                <p style="color: #ffb400;">⭐⭐⭐⭐⭐</p>
+                <p style="font-size: 0.9rem; margin: 15px 0;">"World's most powerful servers provided by CoreMMC."</p>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 35px; height: 35px; background: #e44d26; border-radius: 50%; display: flex; align-items: center; justify-content: center;">S</div>
+                    <div><h5 style="margin:0;">spinnypiegamer</h5><p style="font-size: 0.7rem; color:#8b949e;">Gamer</p></div>
+                </div>
+            </div>
+            <div class="team-card">
+                <p style="color: #ffb400;">⭐⭐⭐⭐⭐</p>
+                <p style="font-size: 0.9rem; margin: 15px 0;">"Pyrox bhai OP (Goated). He helped me a lot. Honorable mention to Sarthak and Raj."</p>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 35px; height: 35px; background: #f1c40f; border-radius: 50%; display: flex; align-items: center; justify-content: center;">R</div>
+                    <div><h5 style="margin:0;">rajveer09_</h5><p style="font-size: 0.7rem; color:#8b949e;">Developer</p></div>
+                </div>
+            </div>
+            <div class="team-card">
+                <p style="color: #ffb400;">⭐⭐⭐⭐⭐</p>
+                <p style="font-size: 0.9rem; margin: 15px 0;">"World's most powerful servers provided by CoreMMC."</p>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 35px; height: 35px; background: #e44d26; border-radius: 50%; display: flex; align-items: center; justify-content: center;">S</div>
+                    <div><h5 style="margin:0;">spinnypiegamer</h5><p style="font-size: 0.7rem; color:#8b949e;">Gamer</p></div>
+                </div>
+            </div>
+            <div class="team-card">
+                <p style="color: #ffb400;">⭐⭐⭐⭐⭐</p>
+                <p style="font-size: 0.9rem; margin: 15px 0;">"Pyrox bhai OP (Goated). He helped me a lot. Honorable mention to Sarthak and Raj."</p>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 35px; height: 35px; background: #f1c40f; border-radius: 50%; display: flex; align-items: center; justify-content: center;">R</div>
+                    <div><h5 style="margin:0;">rajveer09_</h5><p style="font-size: 0.7rem; color:#8b949e;">Developer</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="network-section">
         <div class="network-header">
