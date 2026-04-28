@@ -11,16 +11,15 @@
             font-family: 'Inter', sans-serif;
             background-color: #020617;
             color: #f9fafb;
-            /* Bot-style Background: Tech Grid + Radial Glow */
-            background-image: 
-                radial-gradient(circle at 50% 0%, #1e1b4b 0%, transparent 50%),
-                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            /* New Requested Background */
+            background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)), url("https://i.ibb.co/5hFDQyjp/image-search-1777368278082.jpg");
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
         }
 
         .glass-card {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(59, 130, 246, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,7 +28,7 @@
         .glass-card:hover {
             border-color: #3b82f6;
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.4);
         }
 
         .glow-button {
@@ -41,16 +40,20 @@
             border-bottom: 1px solid #334155;
         }
 
-        /* Subtle scanline animation for the bot feel */
+        /* Dropdown Styling */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
         body::after {
             content: " ";
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.01));
             z-index: 9999;
             background-size: 100% 4px, 3px 100%;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.2;
         }
     </style>
 </head>
@@ -61,12 +64,25 @@
             <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" alt="CoreMMC Logo" class="w-10 h-10 object-contain rounded-lg">
             <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-white">CoreMMC</span>
         </div>
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
+        
+        <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
             <a href="#" class="hover:text-blue-400 transition">Features</a>
-            <a href="CoreMMC-MC-Hosting.html" class="hover:text-blue-400 transition">Minecraft</a>
-            <a href="CoreMMC-Vps-Hosting" class="hover:text-blue-400 transition">VPS</a>
-            <a href="https://panel.warnode.cloud/" class="hover:text-blue-400 transition">Panel</a>
+            
+            <div class="relative dropdown">
+                <button class="flex items-center hover:text-blue-400 transition outline-none">
+                    Hostings 
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute hidden bg-[#0f172a] border border-gray-800 rounded-lg py-2 w-48 mt-2 shadow-xl">
+                    <a href="#" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Web Hosting</a>
+                    <a href="CoreMMC-MC-Hosting.html" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Minecraft Hosting</a>
+                    <a href="CoreMMC-VPS-Hosting.html" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">VPS Hosting</a>
+                </div>
+            </div>
+
+            <a href="https://panel.warnode.cloud/" target="_blank" class="hover:text-blue-400 transition">Bot Panel</a>
         </div>
+
         <a href="https://discord.gg/ydjSusGg5" target="_blank" class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-md text-sm font-bold glow-button transition">Contact Support</a>
     </nav>
 
@@ -78,18 +94,18 @@
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white">
             CoreMMC <span class="text-blue-500">Bot</span> Hosting
         </h1>
-        <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10 leading-relaxed">
+        <p class="max-w-2xl mx-auto text-gray-300 text-lg mb-10 leading-relaxed">
             Power your Discord bot with enterprise-grade infrastructure. Ultra-low latency, instant deployment, and zero downtime. Built for communities of all sizes.
         </p>
         <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
             <button class="bg-blue-600 hover:bg-blue-700 w-full md:w-auto px-8 py-3 rounded-md font-bold transition glow-button">View Hosting Plans</button>
-            <a href="https://panel.warnode.cloud/" class="bg-gray-800 hover:bg-gray-700 w-full md:w-auto px-8 py-3 rounded-md font-bold transition text-center">Open Panel →</a>
+            <a href="https://panel.warnode.cloud/" target="_blank" class="bg-gray-800 hover:bg-gray-700 w-full md:w-auto px-8 py-3 rounded-md font-bold transition text-center">Open Panel →</a>
         </div>
 
         <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 text-center">
-            <div><p class="text-2xl font-bold text-white">7.0GB/s+</p><p class="text-gray-500 text-xs uppercase">NVME</p></div>
-            <div><p class="text-2xl font-bold text-white">99.99%</p><p class="text-gray-500 text-xs uppercase">Uptime SLA</p></div>
-            <div><p class="text-2xl font-bold text-white">&lt;5 Min</p><p class="text-gray-500 text-xs uppercase">Support</p></div>
+            <div><p class="text-2xl font-bold text-white">7.0GB/s+</p><p class="text-gray-400 text-xs uppercase">NVME</p></div>
+            <div><p class="text-2xl font-bold text-white">99.99%</p><p class="text-gray-400 text-xs uppercase">Uptime SLA</p></div>
+            <div><p class="text-2xl font-bold text-white">&lt;5 Min</p><p class="text-gray-400 text-xs uppercase">Support</p></div>
         </div>
     </header>
 
@@ -114,14 +130,14 @@
     <section class="max-w-6xl mx-auto px-4 pb-32 relative z-10">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold mb-4">Bot Hosting Plans</h2>
-            <p class="text-gray-400">Choose the perfect performance tier for your bot.</p>
+            <p class="text-gray-300">Choose the perfect performance tier for your bot.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="glass-card rounded-xl p-8 relative">
                 <h3 class="text-gray-400 font-medium mb-2">Starter</h3>
                 <div class="flex items-baseline mb-6">
-                    <span class="text-3xl font-bold">₹15</span>
+                    <span class="text-3xl font-bold text-white">₹15</span>
                     <span class="text-gray-500 ml-2">/mo</span>
                 </div>
                 <button class="w-full bg-white/5 hover:bg-white/10 py-2 rounded-md font-bold mb-8 border border-white/10 transition">Order Now</button>
@@ -167,35 +183,35 @@
         </div>
     </section>
 
-    <footer class="border-t border-gray-900 py-12 px-8 mt-20 relative z-10 bg-black/40">
+    <footer class="border-t border-gray-900 py-12 px-8 mt-20 relative z-10 bg-black/60">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
                 <div class="flex items-center space-x-2 mb-4">
                     <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" class="w-6 h-6">
                     <h4 class="font-bold text-white">CoreMMC</h4>
                 </div>
-                <p class="text-sm text-gray-500 leading-relaxed">Enterprise-grade hosting for gamers and developers. Fast, reliable, and affordable.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">Enterprise-grade hosting for gamers and developers. Fast, reliable, and affordable.</p>
             </div>
             <div>
                 <h4 class="font-bold mb-4 text-sm text-white">Hosting</h4>
-                <ul class="text-sm text-gray-500 space-y-2">
-                    <li><a href="CoreMMC-MC-Hosting.html" class="hover:text-blue-400">Minecraft Hosting</a></li>
-                    <li><a href="CoreMMC-Vps-Hosting" class="hover:text-blue-400">VPS Hosting</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Web Hosting</a></li>
+                <ul class="text-sm text-gray-400 space-y-2">
+                    <li><a href="CoreMMC-MC-Hosting.html" class="hover:text-blue-400 transition">Minecraft Hosting</a></li>
+                    <li><a href="CoreMMC-VPS-Hosting.html" class="hover:text-blue-400 transition">VPS Hosting</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Web Hosting</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="font-bold mb-4 text-sm text-white">Support</h4>
-                <ul class="text-sm text-gray-500 space-y-2">
-                    <li><a href="https://discord.gg/ydjSusGg5" class="hover:text-blue-400">Contact Us</a></li>
-                    <li><a href="https://panel.warnode.cloud/" class="hover:text-blue-400">Bot Panel</a></li>
-                    <li><a href="#" class="hover:text-blue-400">Terms of Service</a></li>
+                <ul class="text-sm text-gray-400 space-y-2">
+                    <li><a href="https://discord.gg/ydjSusGg5" target="_blank" class="hover:text-blue-400 transition">Contact Us</a></li>
+                    <li><a href="https://panel.warnode.cloud/" target="_blank" class="hover:text-blue-400 transition">Bot Panel</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Terms of Service</a></li>
                 </ul>
             </div>
             <div class="text-right">
-                <p class="text-xs text-gray-600">© 2026 CoreMMC. All rights reserved.</p>
+                <p class="text-xs text-gray-500">© 2026 CoreMMC. All rights reserved.</p>
                 <div class="flex justify-end space-x-4 mt-4 opacity-50">
-                    <a href="https://discord.gg/ydjSusGg5" class="hover:opacity-100 transition">Discord</a>
+                    <a href="https://discord.gg/ydjSusGg5" target="_blank" class="hover:opacity-100 transition">Discord</a>
                     <a href="#" class="hover:opacity-100 transition">Github</a>
                 </div>
             </div>
