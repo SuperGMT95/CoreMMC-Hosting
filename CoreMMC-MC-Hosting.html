@@ -237,12 +237,13 @@
         });
 
         const plans = [
-            { name: 'Cow', intel: 25, amd: 35, ram: '2GB', cpu: '200%', ssd: '30GB', ports: '2', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2x4Znl3aWk5OXUwaHdhOHZ3NzQyNzZreXphcXdnd2s2NTd1dXYzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8hNRGVIW1ljowZVz0S/giphy.gif' },
-            { name: 'Pig', intel: 45, amd: 65, ram: '4GB', cpu: '400%', ssd: '50GB', ports: '3', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDh1dnZxaGNyemV2cTJ0dmlxYXhpenV5NmM4OXZ3bGU0ZW5id3R6MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XjHEHH6tJCG7yUuZMt/giphy.gif' },
-            { name: 'Sheep', intel: 75, amd: 95, ram: '6GB', cpu: '600%', ssd: '60GB', ports: '4', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa25xbGx0bHQwcGxkbjhkeWJzbGV6NGF3Nnp3NjFhMWwxMmg0ZGl5YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9RRBKUHulMbK2L0iS0/giphy.gif' },
-            { name: 'Slime', intel: 110, amd: 140, ram: '8GB', cpu: '800%', ssd: '80GB', ports: '5', gif: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhpOGJicXo0anF3bW93cXUyNG1uc2hnajBjaXo4aWRvN3kzeXQ5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/89ydHuoQ4bV9UDws5g/giphy.gif' },
-            { name: 'Villager', intel: 160, amd: 190, ram: '12GB', cpu: '1200%', ssd: '100GB', ports: '6', proxy: '1 Proxy Server', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjM2MWtkZ2FmeGdtcDNlOXM1MWRxZzRhbjgxdmc3N29zZjA2a2R0MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HCLbhUDRzDxbUClyxl/giphy.gif' },
-            { name: 'Chicken', intel: 220, amd: 260, ram: '16GB', cpu: '1600%', ssd: '150GB', ports: '8', proxy: '2 Proxy Servers', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG81cTdpdndhNmg1cjZnOWs3NnhsNTA4dmw3Znl0YmVnd251OGg0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UiYQWoZgafFJaN9hw/giphy.gif' }
+            { name: 'Cow', intel: 59, amd: 119, ram: '2GB', cpu: '100%', ssd: '10GB', ports: '2', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2x4Znl3aWk5OXUwaHdhOHZ3NzQyNzZreXphcXdnd2s2NTd1dXYzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8hNRGVIW1ljowZVz0S/giphy.gif' },
+            { name: 'Pig', intel: 139, amd: 220, ram: '4GB', cpu: '200%', ssd: '20GB', ports: '3', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDh1dnZxaGNyemV2cTJ0dmlxYXhpenV5NmM4OXZ3bGU0ZW5id3R6MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XjHEHH6tJCG7yUuZMt/giphy.gif' },
+            { name: 'Sheep', intel: 229, amd: 300, ram: '6GB', cpu: '300%', ssd: '30GB', ports: '4', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa25xbGx0bHQwcGxkbjhkeWJzbGV6NGF3Nnp3NjFhMWwxMmg0ZGl5YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9RRBKUHulMbK2L0iS0/giphy.gif' },
+            { name: 'Slime', intel: 389, amd: 449, ram: '8GB', cpu: '400%', ssd: '40GB', ports: '5', gif: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhpOGJicXo0anF3bW93cXUyNG1uc2hnajBjaXo4aWRvN3kzeXQ5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/89ydHuoQ4bV9UDws5g/giphy.gif' },
+            { name: 'Villager', intel: 500, amd: 649, ram: '12GB', cpu: '600%', ssd: '60GB', ports: '6', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjM2MWtkZ2FmeGdtcDNlOXM1MWRxZzRhbjgxdmc3N29zZjA2a2R0MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HCLbhUDRzDxbUClyxl/giphy.gif' },
+            { name: 'Chicken', intel: 549, amd: 849, ram: '16GB', cpu: '800%', ssd: '80GB', ports: '8', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG81cTdpdndhNmg1cjZnOWs3NnhsNTA4dmw3Znl0YmVnd251OGg0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UiYQWoZgafFJaN9hw/giphy.gif' },
+            { name: 'Chicken', intel: 549, amd: 849, ram: '16GB', cpu: '800%', ssd: '80GB', ports: '8', gif: '
         ];
 
         function renderPlans(type) {
