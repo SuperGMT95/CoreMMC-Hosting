@@ -11,7 +11,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #020617;
             color: #f9fafb;
-            /* New Requested Background */
+            /* Using the requested background from your provided link */
             background-image: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)), url("https://i.ibb.co/5hFDQyjp/image-search-1777368278082.jpg");
             background-size: cover;
             background-position: center;
@@ -40,7 +40,7 @@
             border-bottom: 1px solid #334155;
         }
 
-        /* Dropdown Styling */
+        /* Dropdown Functionality */
         .dropdown:hover .dropdown-menu {
             display: block;
         }
@@ -74,9 +74,10 @@
                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="dropdown-menu absolute hidden bg-[#0f172a] border border-gray-800 rounded-lg py-2 w-48 mt-2 shadow-xl">
-                    <a href="#" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Web Hosting</a>
                     <a href="CoreMMC-MC-Hosting.html" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Minecraft Hosting</a>
+                    <a href="#" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Web Hosting</a>
                     <a href="CoreMMC-VPS-Hosting.html" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">VPS Hosting</a>
+                    <a href="https://discord.gg/ydjSusGg5" class="block px-4 py-2 hover:bg-blue-600 hover:text-white transition">Contact Support</a>
                 </div>
             </div>
 
@@ -127,21 +128,40 @@
         </div>
     </section>
 
+    <section class="max-w-4xl mx-auto px-4 pb-24 relative z-10">
+        <div class="glass-card rounded-xl p-6 border-blue-500/20">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold flex items-center"><span class="text-blue-400 mr-2">📊</span> Live Performance</h3>
+                <span class="text-xs text-green-400 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span> Operational</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-black/40 p-4 rounded-lg">
+                    <p class="text-xs text-gray-500 uppercase mb-1">CPU Usage</p>
+                    <p class="text-2xl font-bold">12.4%</p>
+                </div>
+                <div class="bg-black/40 p-4 rounded-lg">
+                    <p class="text-xs text-gray-500 uppercase mb-1">RAM Usage</p>
+                    <p class="text-2xl font-bold">256MB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="max-w-6xl mx-auto px-4 pb-32 relative z-10">
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold mb-4">Bot Hosting Plans</h2>
             <p class="text-gray-300">Choose the perfect performance tier for your bot.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass-card rounded-xl p-8 relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-card rounded-xl p-6 relative">
                 <h3 class="text-gray-400 font-medium mb-2">Starter</h3>
                 <div class="flex items-baseline mb-6">
                     <span class="text-3xl font-bold text-white">₹15</span>
                     <span class="text-gray-500 ml-2">/mo</span>
                 </div>
                 <button class="w-full bg-white/5 hover:bg-white/10 py-2 rounded-md font-bold mb-8 border border-white/10 transition">Order Now</button>
-                <ul class="space-y-4 text-sm text-gray-300">
+                <ul class="space-y-4 text-xs text-gray-300">
                     <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 512MB RAM</li>
                     <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 50% CPU</li>
                     <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 2GB NVMe</li>
@@ -149,7 +169,7 @@
                 </ul>
             </div>
 
-            <div class="glass-card rounded-xl p-8 relative border-blue-500/40">
+            <div class="glass-card rounded-xl p-6 relative border-blue-500/40">
                 <div class="absolute -top-3 right-8 bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Popular</div>
                 <h3 class="text-gray-400 font-medium mb-2">Pro</h3>
                 <div class="flex items-baseline mb-6">
@@ -157,7 +177,7 @@
                     <span class="text-gray-500 ml-2">/mo</span>
                 </div>
                 <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-md font-bold mb-8 glow-button transition">Order Now</button>
-                <ul class="space-y-4 text-sm text-gray-300">
+                <ul class="space-y-4 text-xs text-gray-300">
                     <li class="flex items-center"><span class="text-blue-400 mr-2">✔</span> 1GB RAM</li>
                     <li class="flex items-center"><span class="text-blue-400 mr-2">✔</span> 100% CPU</li>
                     <li class="flex items-center"><span class="text-blue-400 mr-2">✔</span> 5GB NVMe</li>
@@ -165,7 +185,22 @@
                 </ul>
             </div>
 
-            <div class="glass-card rounded-xl p-8 relative border-cyan-500/40">
+            <div class="glass-card rounded-xl p-6 relative">
+                <h3 class="text-gray-400 font-medium mb-2">Elite</h3>
+                <div class="flex items-baseline mb-6">
+                    <span class="text-3xl font-bold text-white">₹60</span>
+                    <span class="text-gray-500 ml-2">/mo</span>
+                </div>
+                <button class="w-full bg-white/5 hover:bg-white/10 py-2 rounded-md font-bold mb-8 border border-white/10 transition">Order Now</button>
+                <ul class="space-y-4 text-xs text-gray-300">
+                    <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 2GB RAM</li>
+                    <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 150% CPU</li>
+                    <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 10GB NVMe</li>
+                    <li class="flex items-center"><span class="text-blue-500 mr-2">✔</span> 3 Ports</li>
+                </ul>
+            </div>
+
+            <div class="glass-card rounded-xl p-6 relative border-cyan-500/40">
                 <div class="absolute -top-3 right-8 bg-cyan-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Best Value</div>
                 <h3 class="text-gray-400 font-medium mb-2">Enterprise</h3>
                 <div class="flex items-baseline mb-6">
@@ -173,7 +208,7 @@
                     <span class="text-gray-500 ml-2">/mo</span>
                 </div>
                 <button class="w-full bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-400 py-2 rounded-md font-bold mb-8 border border-cyan-500/30 transition">Order Now</button>
-                <ul class="space-y-4 text-sm text-gray-300">
+                <ul class="space-y-4 text-xs text-gray-300">
                     <li class="flex items-center"><span class="text-cyan-400 mr-2">✔</span> 8GB RAM</li>
                     <li class="flex items-center"><span class="text-cyan-400 mr-2">✔</span> 400% CPU</li>
                     <li class="flex items-center"><span class="text-cyan-400 mr-2">✔</span> 50GB NVMe</li>
@@ -198,6 +233,7 @@
                     <li><a href="CoreMMC-MC-Hosting.html" class="hover:text-blue-400 transition">Minecraft Hosting</a></li>
                     <li><a href="CoreMMC-VPS-Hosting.html" class="hover:text-blue-400 transition">VPS Hosting</a></li>
                     <li><a href="#" class="hover:text-blue-400 transition">Web Hosting</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Discord Bot Hosting</a></li>
                 </ul>
             </div>
             <div>
@@ -212,12 +248,11 @@
                 <p class="text-xs text-gray-500">© 2026 CoreMMC. All rights reserved.</p>
                 <div class="flex justify-end space-x-4 mt-4 opacity-50">
                     <a href="https://discord.gg/ydjSusGg5" target="_blank" class="hover:opacity-100 transition">Discord</a>
-                    <a href="#" class="hover:opacity-100 transition">Github</a>
                 </div>
             </div>
         </div>
     </footer>
 
 </body>
-    </html>
-    
+</html>
+                 
