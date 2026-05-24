@@ -713,5 +713,192 @@
         }
         setInterval(createSnowflake, 150);
     </script>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreMMC Hosting</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Orbitron:wght@500;700&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #10151f; /* Dark background matching the image */
+            font-family: 'Orbitron', sans-serif; /* Global font */
+            overflow-x: hidden; /* Prevent horizontal scroll for animations */
+        }
+
+        /* --- TYPING TEXT STYLES --- */
+        .typing-container {
+            font-size: 2em; /* Increase size for visibility */
+            display: inline-flex;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        /* Styling for the first white line from image 1 */
+        .line1 {
+            color: white;
+            font-family: 'Major Mono Display', monospace; /* Monospaced font like img 1 */
+            overflow: hidden; /* Ensures the text is hidden at the start */
+            border-right: 3px solid white; /* Cursory blinking effect */
+            white-space: nowrap; /* Keeps the content on a single line */
+            animation: typing 2.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        /* Styling for the second purple line from image 1 */
+        .line2 {
+            color: #d1b1ff; /* Purple matching image 1 */
+            font-family: 'Orbitron', sans-serif; /* Orbitron for variety like img 1 */
+            overflow: hidden;
+            border-right: 3px solid #d1b1ff;
+            white-space: nowrap;
+            /* Delayed animation so it types after Line 1 */
+            animation: typing 2.5s steps(20, end) 2.5s forwards, blink-caret-purple 0.75s step-end infinite 2.5s;
+            opacity: 0; /* Hidden initially */
+        }
+
+        /* --- KEYFRAMES FOR ANIMATIONS --- */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Caret Blinking for Line 1 */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+
+        /* Caret Blinking for Line 2 */
+        @keyframes blink-caret-purple {
+            from, to { border-color: transparent }
+            50% { border-color: #d1b1ff; }
+        }
+
+        /* Delay appearance for Line 2 and reveal during typing */
+        .line2 {
+            animation: typing 2.5s steps(20, end) 2.5s forwards, blink-caret-purple 0.75s step-end infinite 2.5s, reveal 0.1s 2.5s forwards;
+        }
+        @keyframes reveal {
+            to { opacity: 1; }
+        }
+
+
+        /* --- MARGINALIZING & INTEGRATING WITH THE MAIN HERO CONTENT --- */
+        #marginalizedHero {
+            /* Full hero area position and style based on Image 11/12 */
+            width: 100%;
+            height: 80vh; /* Adjust height as needed */
+            background-image: linear-gradient(rgba(16, 21, 31, 0.8), rgba(16, 21, 31, 0.8)), url('https://path-to-your-background-image.jpg'); /* Background from img 11 */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Main Hero Titles - Re-integrated, slightly stylized for animation flow */
+        #marginalizedHero h1 {
+            font-size: 3em;
+            margin-bottom: 0.2em;
+            font-weight: 700;
+        }
+
+        #marginalizedHero h1 span.blue {
+            color: #4dcfff; /* Blue from images */
+        }
+
+        #marginalizedHero p {
+            font-size: 1.2em;
+            color: #a0a6b1;
+            max-width: 600px;
+            margin-bottom: 2em;
+            line-height: 1.6;
+        }
+
+        /* --- PLACE THE TYPING TEXT ABOVE THE MAIN TITLE --- */
+        .typing-container {
+            position: relative;
+            top: -20px; /* Shift up a bit */
+            z-index: 10;
+        }
+
+        /* Main title and text now animated to fade and slide up after typing */
+        #marginalizedHero h1,
+        #marginalizedHero p,
+        .btn-container {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease 5.5s forwards; /* Delayed after typing */
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button styling from image 12 */
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: #1cb5e0; /* Blue gradient button */
+            color: black;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #3b4252;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="marginalizedHero">
+        <div style="background: rgba(147, 51, 234, 0.2); color: #d1b1ff; padding: 5px 15px; border-radius: 20px; font-size: 0.9em; margin-bottom: 1em;">
+            🚀 CoreMMC || India's Fastest Hosting
+        </div>
+
+        <div class="typing-container">
+            <span class="line1">Host your own</span>
+            <span class="line2">Discord Bots</span>
+        </div>
+
+        <h1>Premium Hosting<br><span class="blue">Built for Performance</span></h1>
+        <p>VPS • Game • Bot • Web Hosting<br>Smooth Performance • Zero Lag • Pure Stability</p>
+
+        <div class="btn-container">
+            <a href="#" class="btn btn-primary">⚡ Home Page</a>
+            <a href="#" class="btn btn-secondary">Contact Support</a>
+        </div>
+    </div>
+</script>
 </body>
 </html>
