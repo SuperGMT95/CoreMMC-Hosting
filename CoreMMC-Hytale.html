@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreMMC Hosting | Premium Hytale Servers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 12, 18, 0.85), rgba(10, 12, 18, 0.95)), 
+                        url('https://i.ibb.co/VWWYmgJJ/image-search-1779600743716.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ─── NAVIGATION BAR ─── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 18, 28, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-section img {
+            height: 45px;
+            width: 45px;
+            object-fit: contain;
+        }
+
+        .logo-section span {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        /* Dropdown Menus */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            font-size: 15px;
+            font-weight: 500;
+            color: #cbd5e1;
+            cursor: pointer;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s;
+        }
+
+        .dropdown-btn:hover {
+            color: #3b82f6;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #0f121c;
+            min-width: 220px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 100;
+        }
+
+        .dropdown-content a {
+            color: #94a3b8;
+            padding: 10px 20px;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding-left: 25px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Distinct Blue Hytale Button */
+        .hytale-btn {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hytale-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        /* ─── HERO SECTION ─── */
+        .hero {
+            text-align: center;
+            padding: 60px 5% 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 span {
+            color: #3b82f6;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        /* ─── PRICING CARDS GRID ─── */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 8% 60px;
+        }
+
+        .card {
+            background: rgba(15, 18, 28, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 i {
+            color: #3b82f6;
+            font-size: 18px;
+        }
+
+        .price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 15px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            font-size: 14px;
+            width: 18px;
+        }
+
+        .features-list li i.fa-server { color: #a855f7; }
+        .features-list li i.fa-microchip { color: #3b82f6; }
+        .features-list li i.fa-hdd { color: #eab308; }
+        .features-list li i.fa-bolt { color: #22c55e; }
+        .features-list li i.fa-shield-halved { color: #ef4444; }
+        .features-list li i.fa-folder-open { color: #06b6d4; }
+        .features-list li i.fa-puzzle-piece { color: #ec4899; }
+
+        .buy-btn {
+            display: block;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .card:hover .buy-btn {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* ─── CORE FEATURES BOTTOM BANNER ─── */
+        .global-features {
+            background: rgba(10, 12, 18, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 8%;
+            margin-bottom: 60px;
+        }
+
+        .global-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .g-feature-item i {
+            font-size: 28px;
+            color: #3b82f6;
+            margin-bottom: 12px;
+        }
+
+        .g-feature-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .g-feature-item p {
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* ─── ENTERPRISE FOOTER (As Requested from image) ─── */
+        footer {
+            background: #07090e;
+            padding: 60px 8% 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        .footer-brand h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand h2 i {
+            color: #3b82f6;
+        }
+
+        .footer-brand p {
+            color: #64748b;
+            font-size: 14px;
+            max-width: 400px;
+            margin-bottom: 25px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            background: #11141d;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #94a3b8;
+            transition: all 0.3s;
+        }
+
+        .footer-socials a:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .footer-links h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            font-size: 14px;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-section">
+            <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" alt="CoreMMC Logo">
+            <span>CoreMMC Hosting</span>
+        </div>
+        <nav>
+            <div class="dropdown">
+                <div class="dropdown-btn">Hostings <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fa-cube"></i> Minecraft Hosting</a>
+                    <a href="#"><i class="fa-server"></i> VPS Hosting</a>
+                    <a href="#"><i class="fa-globe"></i> Web Hosting</a>
+                    <a href="#"><i class="fa-robot"></i> Bot Hosting</a>
+                    <a href="#"><i class="fa-shield-halved"></i> CoreShield Hosting</a>
+                    <a href="#"><i class="fa-headset"></i> Support</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-btn">Panels <i class="fa-solid fa-chevron-down"></i></div>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fa-window-maximize"></i> Web Panel</a>
+                    <a href="#"><i class="fa-gamepad"></i> Minecraft Panel</a>
+                    <a href="#"><i class="fa-terminal"></i> VPS Panel</a>
+                    <a href="#"><i class="fa-code"></i> Bot Panel</a>
+                </div>
+            </div>
+
+            <a href="#" class="hytale-btn">Hytale Panel</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>CoreMMC <span>Hytale Servers</span></h1>
+        <p>Hytale ki nayi aur anokhi duniya ke liye taiyar ho jao! CoreMMC aapko de raha hai high-performance enterprise hardware jahan aap bina kisi lag ya bug ke apna custom kingdom setup kar sakte hain. Fully automated setups aur custom mod configuration support ke sath.</p>
+    </div>
+
+    <div class="pricing-container">
+        
+        <div class="card">
+            <h3><i class="fa-solid fa-bolt"></i> Starter</h3>
+            <div class="price">₹180.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 4GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 200% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-compass"></i> Adventurer</h3>
+            <div class="price">₹280.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 6GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 300% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-map"></i> Explorer</h3>
+            <div class="price">₹380.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 8GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 400% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-hammer"></i> Builder</h3>
+            <div class="price">₹520.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 12 GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 600% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-chess-rook"></i> Kingdom</h3>
+            <div class="price">₹680.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 16 GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 800% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+        <div class="card">
+            <h3><i class="fa-solid fa-crown"></i> Empire</h3>
+            <div class="price">₹999.00 <span style="font-size: 13px; color:#64748b;">/ mo</span></div>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-server"></i> 24 GB RAM</li>
+                <li><i class="fa-solid fa-microchip"></i> AMD EPYC 1200% CPU</li>
+                <li><i class="fa-solid fa-hdd"></i> NVMe SSD Storage</li>
+                <li><i class="fa-solid fa-bolt"></i> Instant Setup</li>
+                <li><i class="fa-solid fa-shield-halved"></i> CoreMMC DDoS Protection</li>
+                <li><i class="fa-solid fa-folder-open"></i> Full File Access</li>
+                <li><i class="fa-solid fa-puzzle-piece"></i> One-Click Mods</li>
+            </ul>
+            <a href="#" class="buy-btn">Order Now</a>
+        </div>
+
+    </div>
+
+    <div class="global-features">
+        <div class="global-features-grid">
+            <div class="g-feature-item">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Instant Setup</h4>
+                <p>Automatic activation right after payment</p>
+            </div>
+            <div class="g-feature-item">
+                <i class="fa-solid fa-shield-virus"></i>
+                <h4>CoreMMC Protection</h4>
+                <p>24/7 Enterprise DDoS Safe Network</p>
+            </div>
+            <div class="g-feature-item">
+                <i class="fa-solid fa-folder-tree"></i>
+                <h4>Full File Access</h4>
+                <p>Complete control via SFTP & Panels</p>
+            </div>
+            <div class="g-feature-item">
+                <i class="fa-solid fa-cubes"></i>
+                <h4>One-Click Mods</h4>
+                <p>Install plugins and skins effortlessly</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2><i class="fa-solid fa-bolt"></i> CoreMMC Hosting</h2>
+                <p>Enterprise-grade hosting for gamers and developers. Fast, reliable, and affordable setups built for next-generation sandbox titles.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Hosting</h3>
+                <ul>
+                    <li><a href="#">Minecraft Hosting</a></li>
+                    <li><a href="#">Intel VPS</a></li>
+                    <li><a href="#">AMD VPS</a></li>
+                    <li><a href="#">Discord Bot Hosting</a></li>
+                    <li><a href="#">Web Hosting</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>&copy; 2026 CoreMMC Hosting. All rights reserved.</div>
+            <div>Built for the community.</div>
+        </div>
+    </footer>
+</script>
+</body>
+</html>
