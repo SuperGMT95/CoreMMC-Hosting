@@ -881,5 +881,254 @@
 </head>
 <body>
 </script>
+    <style>
+    /* Section Container with Background Image Layout */
+    .coremmc-hero-master {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 75vh;
+        padding: 60px 20px;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Top Premium Capsule Badge */
+    .hero-capsule-badge {
+        background: linear-gradient(90deg, rgba(147, 51, 234, 0.2), rgba(59, 130, 246, 0.2));
+        border: 1px solid rgba(168, 85, 247, 0.4);
+        padding: 6px 18px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #c084fc;
+        letter-spacing: 0.5px;
+        margin-bottom: 25px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+        opacity: 0;
+        animation: heroFadeInDown 1s ease-out 0.2s forwards;
+    }
+
+    .hero-capsule-badge i {
+        color: #fbbf24;
+    }
+
+    /* Main Big Title */
+    .hero-main-title {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ffffff;
+        margin-bottom: 10px;
+        opacity: 0;
+        animation: heroFadeInUp 1.2s ease-out 0.5s forwards;
+    }
+
+    /* Cyan Blue Gradient Accent Text */
+    .hero-main-title span {
+        background: linear-gradient(135deg, #38bdf8, #0284c7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        position: relative;
+    }
+
+    /* Continuous subtle horizontal shine effect on the main gradient text */
+    .hero-main-title span::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #38bdf8, #0284c7);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: heroExpandLine 1.5s ease-out 1.2s forwards;
+    }
+
+    /* Tagline / Subtitle Row */
+    .hero-tagline-specs {
+        font-size: 15px;
+        color: #94a3b8;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        margin-bottom: 35px;
+        opacity: 0;
+        animation: heroFadeInUp 1.2s ease-out 0.8s forwards;
+    }
+
+    /* Dynamic Typing Target Frame */
+    .hero-dynamic-typing-box {
+        margin-top: 8px;
+        min-height: 24px;
+    }
+
+    .hero-typing-text {
+        font-size: 18px;
+        color: #cbd5e1;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    /* Blinking Custom Cursor */
+    .hero-cursor {
+        display: inline-block;
+        font-size: 20px;
+        color: #38bdf8;
+        margin-left: 4px;
+        font-weight: 700;
+        animation: heroBlink 0.8s infinite;
+    }
+
+    /* Action Control Row */
+    .hero-action-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        animation: heroFadeInUp 1.2s ease-out 1.4s forwards;
+    }
+
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 32px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Home Page Button - High Premium Cyan Glow Style */
+    .hero-btn.btn-home {
+        background: linear-gradient(135deg, #00b4db, #0083b0);
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 180, 219, 0.4);
+        animation: heroPulseCyanGlow 2.5s infinite;
+    }
+
+    .hero-btn.btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 180, 219, 0.7);
+        filter: brightness(1.1);
+    }
+
+    .hero-btn.btn-home i {
+        color: #f59e0b; /* Gold Bolt Icon */
+    }
+
+    /* Contact Support Button - Translucent Glassmorphism Style */
+    .hero-btn.btn-support {
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #94a3b8 !important;
+        backdrop-filter: blur(8px);
+    }
+
+    .hero-btn.btn-support:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* ─── Hero Keyframes Animations ─── */
+    @keyframes heroFadeInDown {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroFadeInUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroExpandLine {
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
+    }
+
+    @keyframes heroBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    @keyframes heroPulseCyanGlow {
+        0% { box-shadow: 0 0 12px rgba(0, 180, 219, 0.3); }
+        50% { box-shadow: 0 0 25px rgba(0, 180, 219, 0.6); }
+        100% { box-shadow: 0 0 12px rgba(0, 180, 219, 0.3); }
+    }
+
+    /* Responsive scaling for mobile devices */
+    @media (max-width: 768px) {
+        .hero-main-title { font-size: 34px; }
+        .hero-tagline-specs { font-size: 13px; }
+        .hero-action-buttons { flex-direction: column; gap: 15px; width: 100%; max-width: 300px; margin: 0 auto; }
+        .hero-btn { width: 100%; }
+    }
+</style>
+
+<section class="coremmc-hero-master">
+    <div class="hero-capsule-badge">
+        <i class="fa-solid fa-rocket"></i> CoreMMC || India's Fastest Hosting
+    </div>
+
+    <h1 class="hero-main-title">
+        Premium Hosting<br>
+        <span>Built for Performance</span>
+    </h1>
+
+    <div class="hero-tagline-specs">
+        <div>VPS • Game • Bot • Web Hosting</div>
+        <div class="hero-dynamic-typing-box">
+            <span id="coremmc-typing-target" class="hero-typing-text"></span><span class="hero-cursor">|</span>
+        </div>
+    </div>
+
+    <div class="hero-action-buttons">
+        <a href="YOUR_HOMEPAGE_URL_HERE" class="hero-btn btn-home">
+            <i class="fa-solid fa-bolt"></i> Home Page
+        </a>
+        <a href="YOUR_SUPPORT_URL_HERE" class="hero-btn btn-support">
+            Contact Support
+        </a>
+    </div>
+</section>
+
+<script>
+    (function () {
+        const targetElement = document.getElementById('coremmc-typing-target');
+        const textToDisplay = "Smooth Performance • Zero Lag • Pure Stability";
+        let currentIndex = 0;
+
+        function runHeroTyperEngine() {
+            if (currentIndex < textToDisplay.length) {
+                targetElement.textContent += textToDisplay.charAt(currentIndex);
+                currentIndex++;
+                setTimeout(runHeroTyperEngine, 65); // Typing character switch interval latency
+            }
+        }
+
+        // Delays deployment perfectly to synchronize alongside layout fade-in animations smoothly
+        setTimeout(runHeroTyperEngine, 2000);
+    })();
+</script>
 </body>
 </html>
