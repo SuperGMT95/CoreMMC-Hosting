@@ -879,7 +879,324 @@
         }
     </style>
 </head>
-<body>
+</script>
+    <style>
+    /* Main Engine Section Wrapper */
+    .coremmc-ultimate-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 80vh;
+        padding: 80px 24px;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+        /* Continuous Subtle Cinematic Pulsing background depth */
+        animation: heroAmbientPulse 8s ease-in-out infinite;
+    }
+
+    /* Entire Red Marked Box Container - Floating Breathing Logic */
+    .hero-animation-package {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        /* CONTINUOUS ANIMATION: Pure section ko air-float look dene ke liye */
+        animation: heroSectionFloat 5s ease-in-out infinite;
+    }
+
+    /* 1. TOP PREMIUM CAPSULE BADGE - Entrance & Glow */
+    .premium-capsule-badge {
+        background: linear-gradient(90deg, rgba(147, 51, 234, 0.25), rgba(59, 130, 246, 0.25));
+        border: 1px solid rgba(168, 85, 247, 0.5);
+        padding: 8px 22px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #d8b4fe;
+        letter-spacing: 0.8px;
+        margin-bottom: 30px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        
+        /* Entrance animation */
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: heroFadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards,
+                  badgeGlowPulse 3s ease-in-out infinite 1.2s;
+    }
+
+    .premium-capsule-badge i {
+        color: #fbbf24;
+        animation: spinRocket 4s linear infinite;
+    }
+
+    /* 2. THE BIG TITLE FRAME (Premium Hosting) */
+    .hero-title-primary {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        margin-bottom: 5px;
+        
+        /* Entrance setup */
+        opacity: 0;
+        transform: translateY(30px);
+        animation: heroFadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+    }
+
+    /* 3. ACCENT GRADIENT TITLE (Built for Performance) */
+    .hero-title-accent {
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+        
+        /* Cyan Blue Gradient matching your target screen */
+        background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+        
+        /* Entrance setup */
+        opacity: 0;
+        transform: translateY(30px);
+        animation: heroFadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
+    }
+
+    /* 4. SPECS MATRIX & TYPING MATRIX BOX */
+    .hero-spec-matrix {
+        font-size: 16px;
+        color: #cbd5e1;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        
+        /* Entrance setup */
+        opacity: 0;
+        transform: translateY(20px);
+        animation: heroFadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+    }
+
+    .hero-static-specs {
+        color: #94a3b8;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+    .hero-dynamic-row {
+        margin-top: 10px;
+        min-height: 28px;
+    }
+
+    .hero-typing-engine {
+        font-size: 18px;
+        color: #38bdf8;
+        font-weight: 500;
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Electric Blinking Text Cursor */
+    .hero-electric-cursor {
+        display: inline-block;
+        font-size: 22px;
+        color: #38bdf8;
+        margin-left: 5px;
+        font-weight: 700;
+        animation: cursorBlink 0.8s infinite;
+    }
+
+    /* 5. INTERACTIVE BUTTON INTERACTION ROW */
+    .hero-button-deck {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        align-items: center;
+        
+        /* Entrance setup */
+        opacity: 0;
+        transform: translateY(25px);
+        animation: heroFadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+    }
+
+    .action-btn-core {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 16px 36px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Home Page Button Style - Active Electric Glow */
+    .action-btn-core.home-deck-btn {
+        background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 25px rgba(0, 180, 219, 0.4);
+        animation: buttonPulseCyan 2.5s infinite;
+    }
+
+    .action-btn-core.home-deck-btn:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 12px 35px rgba(0, 180, 219, 0.7);
+        filter: brightness(1.15);
+    }
+
+    .action-btn-core.home-deck-btn i {
+        color: #fbbf24;
+        animation: boltFlicker 1.5s infinite;
+    }
+
+    /* Contact Support Button Style - Dark Translucent Blur */
+    .action-btn-core.support-deck-btn {
+        background: rgba(15, 23, 42, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #94a3b8 !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .action-btn-core.support-deck-btn:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: #ffffff !important;
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+    }
+
+    /* ─── ANIMATION ENGINE KEYFRAMES ─── */
+    
+    /* Entrance Fade In Down */
+    @keyframes heroFadeInDown {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Entrance Fade In Up */
+    @keyframes heroFadeInUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Continuous Flying/Floating Breathing Motion for Red Circle Elements */
+    @keyframes heroSectionFloat {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Ambient Pulsing Glow behind Content */
+    @keyframes heroAmbientPulse {
+        0%, 100% { background-color: rgba(10, 12, 18, 0.0); }
+        50% { background-color: rgba(59, 130, 246, 0.02); }
+    }
+
+    /* Typing Bar Cursor Blink */
+    @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* Badge Continuous Micro-Glow */
+    @keyframes badgeGlowPulse {
+        0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.5); }
+        50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); border-color: rgba(59, 130, 246, 0.7); }
+    }
+
+    /* Primary Cyan Button Pulsing Light */
+    @keyframes buttonPulseCyan {
+        0% { box-shadow: 0 4px 20px rgba(0, 180, 219, 0.4); }
+        50% { box-shadow: 0 4px 35px rgba(0, 180, 219, 0.7); }
+        100% { box-shadow: 0 4px 20px rgba(0, 180, 219, 0.4); }
+    }
+
+    /* Micro Movements inside Buttons Icons */
+    @keyframes spinRocket {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    @keyframes boltFlicker {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    /* Responsive Scaling Mechanics for Cross-Device Performance */
+    @media (max-width: 768px) {
+        .hero-title-primary { font-size: 36px; }
+        .hero-title-accent { font-size: 38px; }
+        .hero-typing-engine { font-size: 15px; }
+        .hero-button-deck { flex-direction: column; gap: 16px; width: 100%; max-width: 320px; }
+        .action-btn-core { width: 100%; }
+    }
+</style>
+
+<section class="coremmc-ultimate-hero">
+    
+    <div class="hero-animation-package">
+        
+        <div class="premium-capsule-badge">
+            <i class="fa-solid fa-circle-notch"></i> CoreMMC || India's Fastest Hosting
+        </div>
+
+        <h1 class="hero-title-primary">Premium Hosting</h1>
+        <h2 class="hero-title-accent">Built for Performance</h2>
+
+        <div class="hero-spec-matrix">
+            <div class="hero-static-specs">VPS • Game • Bot • Web Hosting</div>
+            <div class="hero-dynamic-row">
+                <span id="coremmc-loop-typer" class="hero-typing-engine"></span><span class="hero-electric-cursor">|</span>
+            </div>
+        </div>
+
+        <div class="hero-button-deck">
+            <a href="APNA_HOMEPAGE_LINK" class="action-btn-core home-deck-btn">
+                <i class="fa-solid fa-bolt"></i> Home Page
+            </a>
+            <a href="APNA_SUPPORT_LINK" class="action-btn-core support-deck-btn">
+                Contact Support
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    (function () {
+        const targetOutput = document.getElementById('coremmc-loop-typer');
+        const scriptString = "Smooth Performance • Zero Lag • Pure Stability";
+        let characterPointer = 0;
+
+        function triggerEngineTyping() {
+            if (characterPointer < scriptString.length) {
+                targetOutput.textContent += scriptString.charAt(characterPointer);
+                characterPointer++;
+                setTimeout(triggerEngineTyping, 70); /* Smooth typing speed interval */
+            }
+        }
+
+        // Delays typing slightly to let the entrance animation finish first smoothly
+        setTimeout(triggerEngineTyping, 1800);
+    })();
 </script>
 </body>
 </html>
