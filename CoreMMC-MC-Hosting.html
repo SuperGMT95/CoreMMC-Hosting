@@ -3315,5 +3315,60 @@
         triggeredTabElement.classList.add('active-cpu-node');
     }
 </script>
+    <style>
+    /* Section Container Workspace with Forced Deep Background */
+    .coremmc-text-section {
+        width: 100%;
+        background-color: #070913 !important; /* Forces premium dark canvas visibility */
+        padding: 60px 4%;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        text-align: center;
+    }
+
+    /* CRITICAL FIX: SOLID WHITE & GRADIENT NEON TEXT 
+       (Yeh styling title ko background me hide hone se permanent bachaegi)
+    */
+    .coremmc-title-fixed {
+        font-size: 46px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important; /* Absolute solid pure white visibility base */
+        margin: 0 0 14px 0 !important;
+        padding: 0 !important;
+        letter-spacing: -0.5px !important;
+        line-height: 1.2 !important;
+        display: block !important;
+        text-transform: none !important;
+    }
+
+    /* High Performance Linear Gradient Accent for "Hosting" text snippet */
+    .coremmc-title-fixed span {
+        background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        font-weight: 900 !important;
+    }
+
+    /* High Visibility Slate Gray Sub-description text layer */
+    .coremmc-description-fixed {
+        font-size: 16px !important;
+        color: #94a3b8 !important; /* Smooth visible grey typography contrast */
+        max-width: 620px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        line-height: 1.6 !important;
+        display: block !important;
+        font-weight: 400 !important;
+    }
+</style>
+
+<div class="coremmc-text-section">
+    <h1 class="coremmc-title-fixed">CoreMMC <span>Hosting</span></h1>
+    
+    <p class="coremmc-description-fixed">
+        High-performance gaming nodes engineered for elite level processing power, zero throttle limits, and ultra low latency execution network structures.
+    </p>
+</div>
+</script>
 </body>
 </html>
