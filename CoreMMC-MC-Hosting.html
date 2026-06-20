@@ -1,277 +1,3012 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5XKP45TQ');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreMMC | Premium Minecraft Hosting</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>CoreMMC Hosting - Premium Game Hosting</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* Base Styling */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #050816; color: white; overflow-x: hidden; }
-
-        /* Fixed Background GIF */
-        .main-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGNmemxiNWx6cXBvZ2Zyb3hpOGJ4cHdjZ2JpYzVjZnQxZWdvZmY4MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IepJKLLnVc17nPRkTh/giphy.gif') center/cover;
-            filter: blur(8px) brightness(0.4); z-index: -10;
+        :root {
+            --bg-dark: #070913;
+            --bg-card: rgba(13, 18, 36, 0.7);
+            --primary: #2563eb;
+            --primary-glow: rgba(37, 99, 235, 0.4);
+            --accent: #38bdf8;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        /* Snowflake Animation */
-        .snowflake {
-            position: fixed; top: -10px; z-index: 5; color: white;
-            pointer-events: none; animation: fall linear infinite;
-        }
-        @keyframes fall { to { transform: translateY(105vh); } }
-
-        /* Navbar */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px); position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .logo { font-size: 1.5rem; font-weight: 800; display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
-        .logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #facc15; }
-        .logo span { color: #facc15; }
-
-        .nav-links { display: flex; list-style: none; gap: 15px; align-items: center; }
-        .nav-links a { color: #ccc; text-decoration: none; font-size: 13px; transition: 0.3s; white-space: nowrap; cursor: pointer; }
-        .nav-links a:hover { color: white; }
-
-        /* Dropdowns */
-        .dropdown { position: relative; cursor: pointer; }
-        .dropdown-menu {
-            display: none; position: absolute; background: #111827; min-width: 190px;
-            border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
-            top: 100%; left: 0; margin-top: 10px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 3000;
-        }
-        .dropdown.open .dropdown-menu { display: block; }
-        .dropdown-menu a { padding: 12px 15px; display: block; transition: 0.2s; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
-        .dropdown-menu a:hover { background: #1f2937; color: #3b82f6; }
-
-        /* Hero */
-        .hero { padding: 140px 20px 40px; text-align: center; }
-        .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 6px 18px; border-radius: 20px; font-size: 12px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(59, 130, 246, 0.4); }
-        h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 20px; font-weight: 900; }
-        h1 span { color: #3b82f6; transition: 0.3s; }
-        
-        .cpu-info-box { 
-            max-width: 800px; margin: 0 auto 20px; padding: 20px; 
-            background: rgba(255,255,255,0.03); border-radius: 15px; border-left: 4px solid #3b82f6;
-            text-align: left; font-size: 14px; line-height: 1.6; color: #d1d5db;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        .price-info-row { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-        .price-item { background: rgba(255,255,255,0.05); padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: 700; }
-        .price-item.intel-p { border-left: 3px solid #3b82f6; }
-        .price-item.amd-p { border-left: 3px solid #ef4444; }
-
-        /* Toggle System */
-        .toggle-container { display: flex; justify-content: center; margin-bottom: 30px; }
-        .toggle-box { background: rgba(255,255,255,0.05); padding: 6px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.1); display: flex; gap: 8px; }
-        .toggle-btn { padding: 12px 24px; border-radius: 10px; cursor: pointer; transition: 0.3s; font-weight: 700; color: #9ca3af; display: flex; align-items: center; gap: 8px; }
-        .toggle-btn.active.intel { background: #3b82f6; color: white; }
-        .toggle-btn.active.amd { background: #ef4444; color: white; }
-
-        .choose-plan-header { background: #3b82f6; padding: 15px 40px; border-radius: 12px; display: inline-block; margin-bottom: 40px; font-weight: 800; font-size: 1.2rem; transition: 0.3s; }
-
-        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        .card { 
-            background: rgba(17, 24, 39, 0.75); border: 1px solid rgba(255,255,255,0.08); 
-            border-radius: 20px; padding: 30px; transition: 0.4s; position: relative; 
-            overflow: hidden; backdrop-filter: blur(12px); display: flex; flex-direction: column; text-align: left;
-        }
-        .card:hover { transform: translateY(-10px); border-color: #3b82f6; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
-        .card-bg-gif { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.25; object-fit: cover; }
-
-        .plan-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
-        .plan-name { font-size: 1.6rem; font-weight: 800; }
-        .price-tag h3 { font-size: 1.8rem; color: #fff; }
-        .price-tag span { font-size: 12px; color: #aaa; display: block; text-align: right; }
-
-        .specs-list { list-style: none; margin-bottom: 30px; flex-grow: 1; }
-        .specs-list li { font-size: 14px; color: #d1d5db; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
-        .specs-list li i { color: #3b82f6; font-size: 16px; width: 20px; }
-
-        .btn-buy { 
-            width: 100%; padding: 14px; border-radius: 12px; border: none; 
-            background: #3b82f6; color: white; font-weight: 800; cursor: pointer; 
-            transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* AMD Mode Classes */
-        body.amd-mode h1 span { color: #ef4444; }
-        body.amd-mode .choose-plan-header { background: #ef4444; }
-        body.amd-mode .btn-buy { background: #ef4444; }
-        body.amd-mode .specs-list li i { color: #ef4444; }
-        body.amd-mode .cpu-info-box { border-left-color: #ef4444; }
+        /* Ambient Background Glows */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%);
+            top: 10%;
+            left: -10%;
+            z-index: -1;
+        }
 
-        @media (max-width: 768px) {
-            nav { padding: 10px 3%; }
-            .nav-links { gap: 10px; }
-            .hero { padding-top: 110px; }
-            .plans-grid { padding: 0 15px; }
+        body::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+            top: 40%;
+            right: -10%;
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* -------------------------------- NAVBAR -------------------------------- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(7, 9, 19, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo img {
+            height: 42px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--text-main);
+        }
+
+        nav ul li a i {
+            font-size: 14px;
+            color: var(--accent);
+        }
+
+        .client-space-btn {
+            background: linear-gradient(135deg, var(--primary), #1d4ed8);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .client-space-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        /* -------------------------------- HERO SECTION -------------------------------- */
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            padding: 80px 8% 120px 8%;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-left h1 span {
+            color: transparent;
+            -webkit-text-stroke: 1px #fff;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .dynamic-txt {
+            color: var(--accent) !important;
+            -webkit-text-stroke: 0px !important;
+        }
+
+        .hero-left p {
+            color: var(--text-muted);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-btns {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--text-muted);
+        }
+
+        .sub-tag {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding-left: 5px;
+        }
+
+        /* Hero Right Features Grid */
+        .hero-right {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feat-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .feat-box:hover::before {
+            transform: translateX(100%);
+        }
+
+        .feat-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feat-box h3 i {
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .feat-box p {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Ice block decoration element matching video vibe */
+        .ice-deco {
+            position: absolute;
+            bottom: -50px;
+            right: 10%;
+            opacity: 0.05;
+            font-size: 180px;
+            pointer-events: none;
+        }
+
+
+        /* -------------------------------- PARTNERS / BRANDS -------------------------------- */
+        .brands-section {
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            opacity: 0.6;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .brands-section img {
+            height: 30px;
+            filter: grayscale(1) brightness(2);
+        }
+
+        <style>
+
+        /* -------------------------------- ADVANCED FEATURES -------------------------------- */
+        .section-wrapper {
+            padding: 100px 8%;
+        }
+
+        .tagline {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .advanced-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .advanced-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .advanced-card h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .advanced-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* -------------------------------- PRICING PLANS -------------------------------- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(8, 12, 27, 0.9));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.premium-border {
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .price-header h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .price-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .pricing-amount {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .pricing-amount span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .price-features li {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-features li i {
+            color: #10b981;
+            font-size: 14px;
+        }
+
+        .order-btn {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            padding: 14px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .price-card.premium-border .order-btn {
+            background: var(--primary);
+            border: none;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .price-card.premium-border .order-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .order-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--text-muted);
+        }
+
+        /* -------------------------------- FOOTER -------------------------------- */
+        footer {
+            background: #04060d;
+            padding: 80px 8% 30px 8%;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-desc p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-top: 15px;
+            max-width: 300px;
+        }
+
+        .footer-links h5 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Responsive Layout */
+        @media(max-width: 968px) {
+            header { padding: 20px 4%; }
+            nav { display: none; }
+            .hero-container { grid-template-columns: 1fr; padding: 60px 4%; }
+            .section-wrapper { padding: 60px 4%; }
+            .Dfooter-grid { grid-template-columns: 1fr 1fr; }
+            .hero-left h1 { font-size: 46px; }
         }
     </style>
 </head>
-<body id="mainBody" class="intel-mode">
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XKP45TQ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
-    <div class="main-bg"></div>
-
-    <nav>
-        <a href="https://discord.gg/SvQSv5E53" class="logo">
-            <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" alt="CoreMMC Logo">
-            <span>CoreMMC Hosting</span>
-        </a>
-        <ul class="nav-links">
-            <li class="dropdown" onclick="toggleMenu(event, this)">
-                <a>🌐 Hosting <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
-                <div class="dropdown-menu">
-                    <a href="#">🎮 Minecraft Hosting</a>
-                    <a href="#">🌍 Web Hosting</a>
-                    <a href="#">🖥️ VPS Hosting</a>
-                    <a href="#">🤖 Bot Hosting</a>
-                </div>
-            </li>
-            <li class="dropdown" onclick="toggleMenu(event, this)">
-                <a>⚙️ Panels <i class="fas fa-chevron-down" style="font-size: 9px;"></i></a>
-                <div class="dropdown-menu">
-                    <a href="https://supergmt95.github.io/minecraft-hosting/">🏠 Home Panel</a>
-                    <a href="https://supergmt95.github.io/Game-Panel/">🕹️ Hosting Panel</a>
-                    <a href="#">💳 Billing Panel</a>
-                    <a href="https://discord.gg/SvQSv5E53">🎧 Support</a>
-                </div>
-            </li>
-            <li><a href="https://supergmt95.github.io/Game-Panel/" style="background:linear-gradient(90deg, #4f46e5, #06b6d4); padding: 8px 18px; border-radius: 8px; font-weight:bold; color: white;">🚀 Start</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <div class="badge" id="cpuBadge">INTEL XEON PERFORMANCE</div>
-        <h1 id="heroTitle">Minecraft Server <span>Hosting</span></h1>
+    <!-- -------------------------------- NAVBAR -------------------------------- -->
+    <header>
+    <div class="logo" style="display: inline-flex; align-items: center; gap: 10px;">
         
-        <div class="toggle-container">
-            <div class="toggle-box">
-                <div id="intelBtn" class="toggle-btn active intel" onclick="updateCPU('intel')">
-                    <i class="fas fa-microchip"></i> Intel Xeon
+        <!-- CoreMMC Hosting Logo Link Provided By User -->
+        <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" alt="CoreMMC Hosting">
+
+        <!-- Floating Cloud Sticker Added Perfectly on Left Side -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hsYjkxc2QweGRzNnlydWpmZmJvczdyeTBqMHNkNWVjdTNucXFmMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/V4ErRLRQG2lfKOjIht/giphy.gif" 
+             style="width: 38px; height: auto; pointer-events: none; user-select: none; animation: navCloudFloat 3.5s ease-in-out infinite; filter: drop-shadow(0 4px 6px rgba(56, 189, 248, 0.2));" 
+             alt="Cloud Sticker">
+    </div>
+        <nav>
+    <ul>
+        <li><a href="CoreMMC-MC-Hosting.html" class="active"><i class="fa-solid fa-gamepad"></i> Games</a></li>
+        <li><a href="CoreMMC-Web-Hosting.html"><i class="fa-solid fa-globe"></i> CoreShield</a></li>
+        <li><a href="CoreMMC-VPS-Hosting.html"><i class="fa-solid fa-server"></i> Vps</a></li>
+        <li><a href="CoreMMC-Bot-Hosting.html"><i class="fa-brands fa-discord"></i> Discord Bot</a></li>
+        <li><a href="CoreMMC-Web-Hosting.html"><i class="fa-solid fa-globe"></i> WebHosting</a></li>
+        <li><a href="legal.html"><i class="fa-solid fa-scale-balanced"></i> Legal</a></li>
+    </ul>
+</nav>
+        <a href="#" class="client-space-btn">
+            <i class="fa-regular fa-user"></i> CLIENT SPACE
+        </a>
+          <!-- Floating Cloud Sticker Added Perfectly on Left Side -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hsYjkxc2QweGRzNnlydWpmZmJvczdyeTBqMHNkNWVjdTNucXFmMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/V4ErRLRQG2lfKOjIht/giphy.gif" 
+             style="width: 38px; height: auto; pointer-events: none; user-select: none; animation: navCloudFloat 3.5s ease-in-out infinite; filter: drop-shadow(0 4px 6px rgba(56, 189, 248, 0.2));" 
+             alt="Cloud Sticker">
+
+    </header>
+    
+<style>
+    /* 1. Global Network Section Structure */
+    .global-network-section {
+        padding: 60px 8%;
+        background-color: #070913;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+        color: #ffffff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Left Side: Spinning Globe Layout */
+    .network-left-globe {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .network-left-globe img {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.3));
+        animation: smoothFloat 4s ease-in-out infinite;
+    }
+
+    /* Right Side: Text & Location Content */
+    .network-right-content .tagline {
+        color: #2563eb;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .network-right-content h2 {
+        font-size: 38px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .network-right-content h2 span {
+        color: #38bdf8;
+    }
+
+    .network-right-content p {
+        color: #94a3b8;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    /* Locations Grid Badges */
+    .location-badges {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .badge-item {
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 15px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+        font-size: 15px;
+        transition: border-color 0.3s;
+    }
+
+    .badge-item:hover {
+        border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .badge-item i {
+        color: #38bdf8;
+        font-size: 16px;
+    }
+
+    /* Globe Floating Animation Effect */
+    @keyframes smoothFloat {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* 2. OVERRIDE: Pricing Cards Glass Transparent Blur (Kala rang hatane ke liye) */
+    .pricing-section {
+        background-color: transparent !important;
+    }
+
+    .price-card {
+        background-color: rgba(15, 23, 42, 0.35) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+    }
+
+    .price-card::before {
+        opacity: 0.55 !important;
+    }
+
+    .price-card:hover::before {
+        opacity: 0.75 !important;
+    }
+
+    .price-card::after {
+        background: linear-gradient(180deg, rgba(7, 9, 19, 0.1) 0%, rgba(7, 9, 19, 0.5) 100%) !important;
+    }
+
+    /* Responsive Support for Mobile and Tablets */
+    @media (max-width: 968px) {
+        .global-network-section {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 30px;
+            padding: 40px 4%;
+        }
+        .network-left-globe img {
+            max-width: 300px;
+        }
+        .location-badges {
+            grid-template-columns: 1fr;
+        }
+        .badge-item {
+            justify-content: center;
+        }
+    }
+</style>
+
+    <!-- ------------------------ PRICING PLANS SECTION ------------------------ -->
+    <!-- =========================================================================
+     [PART 2]: COREMMC HOSTING PLANS CENTERED HEADER
+     ========================================================================= -->
+      <div class="custom-premium-header-section">
+    <div class="premium-header-wrapper">
+        
+        <!-- Left Side: Cloud Sticker [2] -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hsYjkxc2QweGRzNnlydWpmZmJvczdyeTBqMHNkNWVjdTNucXFmMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/0NjFWM1boB1gX6D2S0/giphy.gif" class="header-sticker cloud-left" alt="Cloud 2">
+        
+        <!-- Center Content -->
+        <div class="header-text-block">
+            <span class="premium-sub-tag">AFFORDABLE PACKAGES</span>
+            <h2 class="premium-main-title">CoreMMC Hosting <span>VPS Plans</span></h2>
+        </div>
+        
+        <!-- Right Side: Show/Star Sticker (Shared Element) -->
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXVjMWptYmh5bm1xbmpuZGs1YmVubjFncXpvaDlzMjJrZDc1aW0ydCZlcD12MV9internalF9naWZfYnlfaWQmY3Q9cw/H1YGuEsxFy10JPPdah/giphy.gif" class="header-sticker show-right" alt="Star Show 2">
+        
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreMMC Minecraft Game Hosting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandDark: '#070a13',
+                        brandCard: '#0f1424',
+                        brandOrange: '#ff5722',
+                        brandBlue: '#0083ff',
+                    },
+                    boxShadow: {
+                        'neon-orange': '0 0 20px rgba(255, 87, 34, 0.4)',
+                        'neon-blue': '0 0 20px rgba(0, 131, 255, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #060913;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body class="text-gray-300 min-h-screen py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-10 text-center sm:text-left">
+            <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight uppercase">
+                🚀 CoreMMC <span id="header-accent" class="text-brandOrange transition-colors duration-300">Game Servers</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl text-sm leading-relaxed">
+                Ultimate Single-Core Performance Game Servers with DDoS Protection, 99.9% Uptime & One-Click Modpack Installer.
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            <div class="lg:col-span-2">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">1. Select Location</label>
+                <div id="location-container" class="flex flex-wrap gap-2.5">
+                    <button onclick="selectLocation(this, 'mumbai')" class="loc-btn flex items-center space-x-2 bg-brandCard border px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform active:scale-95 active-loc">
+                        <span class="text-xs text-gray-500 font-bold uppercase">IN</span> <span class="text-white font-semibold">Mumbai, India</span>
+                    </button>
+                    <button class="flex items-center space-x-2 bg-brandCard/20 border border-gray-900/50 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed opacity-40">
+                        <span class="text-xs font-bold uppercase">IN</span> <span>Hyderabad, India</span>
+                    </button>
+                    <button onclick="selectLocation(this, 'delhi')" class="loc-btn flex items-center space-x-2 bg-brandCard border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                        <span class="text-xs text-gray-500 font-bold uppercase">IN</span> <span>Delhi, India</span>
+                    </button>
+                    <button onclick="selectLocation(this, 'singapore')" class="loc-btn flex items-center space-x-2 bg-brandCard border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                        <span class="text-xs text-gray-500 font-bold uppercase">SG</span> <span>Singapore</span>
+                    </button>
+                    <button onclick="selectLocation(this, 'frankfurt')" class="loc-btn flex items-center space-x-2 bg-brandCard border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                        <span class="text-xs text-gray-500 font-bold uppercase">DE</span> <span>Frankfurt, Germany</span>
+                    </button>
                 </div>
-                <div id="amdBtn" class="toggle-btn" onclick="updateCPU('amd')">
-                    <i class="fas fa-fire"></i> AMD EPYC
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">2. Choose Node Platform</label>
+                <div class="flex bg-brandCard/50 p-1 rounded-xl border border-gray-800/80">
+                    <button id="btn-amd" onclick="switchCPU('amd')" class="flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-brandOrange text-white shadow-lg shadow-brandOrange/20">
+                        <span>AMD Ryzen/EPYC</span>
+                    </button>
+                    <button id="btn-intel" onclick="switchCPU('intel')" class="flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white">
+                        <span>Intel Premium</span>
+                    </button>
                 </div>
             </div>
         </div>
 
-        <div class="price-info-row">
-            <div class="price-item intel-p">Intel Xeon: ₹35 / GB</div>
-            <div class="price-item amd-p">AMD EPYC: ₹49 / GB</div>
+        <div class="mb-6">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">3. Select Your Minecraft Plan</label>
+            
+            <div id="plans-container" class="space-y-3 min-h-[420px]">
+                </div>
         </div>
 
-        <div class="cpu-info-box" id="cpuInfo">
-            Deploy your server in seconds on enterprise Intel Xeon hardware. One-click modpacks, unlimited players, advanced DDoS mitigation.
-        </div>
-
-        <div class="choose-plan-header" id="planHeader">CHOOSE YOUR INTEL PLAN</div>
-        <div class="plans-grid" id="plansContainer"></div>
-    </section>
+        <div id="pagination-wrapper" class="flex justify-center items-center space-x-2 mt-8">
+            </div>
+    </div>
 
     <script>
-        // Dropdown Toggle Fixed
-        function toggleMenu(event, element) {
-            event.stopPropagation();
-            const isOpen = element.classList.contains('open');
-            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-            if (!isOpen) element.classList.add('open');
-        }
-
-        window.onclick = function(e) {
-            if (!e.target.closest('.dropdown')) {
-                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-            }
+        // Integrated Full Minecraft Data Structure Stack
+        const plansData = {
+            amd: [
+                { emoji: '🐭', name: 'MOUSE PLAN', ram: '2GB DDR4', cpu: '100% (1 vCPU)', ssd: '20GB NVMe', price: '₹89', oldPrice: '₹149', ports: '2 Ports', support: 'Standard' },
+                { emoji: '🐰', name: 'RABBIT PLAN', ram: '4GB DDR4', cpu: '200% (2 vCPU)', ssd: '30GB NVMe', price: '₹189', oldPrice: '₹249', ports: '3 Ports', support: 'Standard' },
+                { emoji: '🦊', name: 'FOX PLAN', ram: '6GB DDR4', cpu: '300% (3 vCPU)', ssd: '45GB NVMe', price: '₹299', oldPrice: '₹499', ports: '4 Ports', support: 'Standard' },
+                { emoji: '🦁', name: 'LION PLAN', ram: '8GB DDR4', cpu: '400% (4 vCPU)', ssd: '90GB NVMe', price: '₹439', oldPrice: '₹599', ports: '5 Ports', support: 'Premium' },
+                { emoji: '🐻', name: 'BEAR PLAN', ram: '12GB DDR4', cpu: '600% (6 vCPU)', ssd: '100GB NVMe', price: '₹549', oldPrice: '₹749', ports: '6 Ports', support: 'Premium' },
+                { emoji: '🐼', name: 'PANDA PLAN', ram: '16GB DDR4', cpu: '800% (8 vCPU)', ssd: '110GB NVMe', price: '₹649', oldPrice: '₹899', ports: '8 Ports', support: 'Premium' },
+                { emoji: '🐉', name: 'DRAGON PLAN', ram: '24GB DDR4', cpu: '1000% (10 vCPU)', ssd: '120GB NVMe', price: '₹749', oldPrice: '₹999', ports: '10 Ports', support: 'Priority' },
+                { emoji: '🦍', name: 'GORILLA PLAN', ram: '32GB DDR4', cpu: '1200% (12 vCPU)', ssd: '144GB NVMe', price: '₹999', oldPrice: '₹1599', ports: '12 Ports', support: 'Priority' },
+                { emoji: '🐘', name: 'ELEPHANT PLAN', ram: '48GB DDR4', cpu: '1400% (14 vCPU)', ssd: '160GB NVMe', price: '₹1499', oldPrice: '₹1999', ports: '16 Ports', support: 'Priority' }
+            ],
+            intel: [
+                { emoji: '🐮', name: 'COW PLAN', ram: '2GB DDR4', cpu: '100% (1 vCPU)', ssd: '20GB NVMe', price: '₹39', oldPrice: '₹99', ports: '2 Ports', support: 'Standard' },
+                { emoji: '🐷', name: 'PIG PLAN', ram: '4GB DDR4', cpu: '200% (2 vCPU)', ssd: '30GB NVMe', price: '₹99', oldPrice: '₹149', ports: '4 Ports', support: 'Standard' },
+                { emoji: '🐑', name: 'SHEEP PLAN', ram: '6GB DDR4', cpu: '300% (3 vCPU)', ssd: '45GB NVMe', price: '₹199', oldPrice: '₹299', ports: '6 Ports', support: 'Standard' },
+                { emoji: '🧪', name: 'SLIME PLAN', ram: '8GB DDR4', cpu: '800% CPU', ssd: '90GB NVMe', price: '₹299', oldPrice: '₹429', ports: '5 Ports', support: 'DDoS Protection' },
+                { emoji: '👨‍🌾', name: 'VILLAGER PLAN', ram: '12GB DDR4', cpu: '600% (6 vCPU)', ssd: '100GB NVMe', price: '₹499', oldPrice: '₹600', ports: '10 Ports', support: 'Premium' },
+                { emoji: '🐔', name: 'CHICKEN PLAN', ram: '16GB DDR4', cpu: '800% (8 vCPU)', ssd: '110GB NVMe', price: '₹559', oldPrice: '₹599', ports: '12 Ports', support: 'Premium' },
+                { emoji: '🕷️', name: 'SPIDER PLAN', ram: '24GB DDR4', cpu: '1000% (10 vCPU)', ssd: '120GB NVMe', price: '₹699', oldPrice: '₹1299', ports: '10 Ports', support: 'Priority' },
+                { emoji: '🏹', name: 'PILLAGER PLAN', ram: '32GB DDR4', cpu: '1200% (12 vCPU)', ssd: '144GB NVMe', price: '₹899', oldPrice: '₹1499', ports: '12 Ports', support: 'Priority' },
+                { emoji: '🔥', name: 'BLAZE PLAN', ram: '48GB DDR4', cpu: '1400% (14 vCPU)', ssd: '160GB NVMe', price: '₹1029', oldPrice: '₹1899', ports: '16 Ports', support: 'Priority' }
+            ]
         };
 
-        const plans = [
-            { name: 'Cow', intel: 39, amd: 89, ram: '2GB', cpu: '100%', ssd: '20GB', ports: '2', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2x4Znl3aWk5OXUwaHdhOHZ3NzQyNzZreXphcXdnd2s2NTd1dXYzcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8hNRGVIW1ljowZVz0S/giphy.gif' },
-            { name: 'Pig', intel: 99, amd: 189, ram: '4GB', cpu: '200%', ssd: '30GB', ports: '3', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDh1dnZxaGNyemV2cTJ0dmlxYXhpenV5NmM4OXZ3bGU0ZW5id3R6MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XjHEHH6tJCG7yUuZMt/giphy.gif' },
-            { name: 'Sheep', intel: 199, amd: 299, ram: '6GB', cpu: '300%', ssd: '45GB', ports: '4', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExa25xbGx0bHQwcGxkbjhkeWJzbGV6NGF3Nnp3NjFhMWwxMmg0ZGl5YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9RRBKUHulMbK2L0iS0/giphy.gif' },
-            { name: 'Slime', intel: 299, amd: 439, ram: '8GB', cpu: '400%', ssd: '90GB', ports: '5', gif: 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExODhpOGJicXo0anF3bW93cXUyNG1uc2hnajBjaXo4aWRvN3kzeXQ5eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/89ydHuoQ4bV9UDws5g/giphy.gif' },
-            { name: 'Villager', intel: 499, amd: 549, ram: '12GB', cpu: '600%', ssd: '100GB', ports: '6', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjM2MWtkZ2FmeGdtcDNlOXM1MWRxZzRhbjgxdmc3N29zZjA2a2R0MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/HCLbhUDRzDxbUClyxl/giphy.gif' },
-            { name: 'Chicken', intel: 559, amd: 649, ram: '16GB', cpu: '800%', ssd: '110GB', ports: '8', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG81cTdpdndhNmg1cjZnOWs3NnhsNTA4dmw3Znl0YmVnd251OGg0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8UiYQWoZgafFJaN9hw/giphy.gif' },
-            { name: 'Spider', intel: 699, amd: 749, ram: '24GB', cpu: '1000%', ssd: '120GB', ports: '10', gif: 'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXdhZDhlaThqc3Z4azc4NXRjdmtwYnMyOGR1N2ExcjB5bWpobTBodCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dy2Acod2YKos3bGcgC/giphy.gif' },
-            { name: 'Pillager', intel: 899, amd: 999, ram: '32GB', cpu: '1200%', ssd: '140GB', ports: '12', gif: 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG5wYWQ1bnpiNWp2aWgwcGV2OHFqNzI2djkzcWxiZ2d4N2ZueHdodiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rmQPNw0XuoGT8CyhCH/giphy.gif' },
-            { name: 'Blaze', intel: 1029, amd: 1499, ram: '48GB', cpu: '1400%', ssd: '160GB', ports: '16', gif: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnZ3OGQxbXkyc3BheDE3enVuMGFzODRwaTR6NDQwdjE2b3Q5YTVnMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f9EOaZAGkmQzPgyjjn/giphy.gif' }
-        ];
+        let currentCPU = 'amd';
+        let currentPage = 1;
+        const itemsPerPage = 4; // Clean view structure configuration
+        let selectedLocName = 'mumbai';
 
-        function renderPlans(type) {
-            const container = document.getElementById('plansContainer');
+        function updateLocationStyles() {
+            const activeBtn = document.querySelector('.active-loc');
+            const allButtons = document.querySelectorAll('.loc-btn');
+            
+            allButtons.forEach(btn => {
+                btn.className = "loc-btn flex items-center space-x-2 bg-brandCard border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95";
+            });
+
+            if (activeBtn) {
+                if (currentCPU === 'amd') {
+                    activeBtn.className = "loc-btn flex items-center space-x-2 bg-brandCard border-brandOrange text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform scale-105 shadow-neon-orange active-loc";
+                } else {
+                    activeBtn.className = "loc-btn flex items-center space-x-2 bg-brandCard border-brandBlue text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform scale-105 shadow-neon-blue active-loc";
+                }
+            }
+        }
+
+        function selectLocation(element, locName) {
+            document.querySelectorAll('.loc-btn').forEach(btn => btn.classList.remove('active-loc'));
+            element.classList.add('active-loc');
+            selectedLocName = locName;
+            updateLocationStyles();
+            renderPlans();
+        }
+
+        function switchCPU(type) {
+            currentCPU = type;
+            currentPage = 1; // Always reset to page 1 during platform shift
+            const btnAmd = document.getElementById('btn-amd');
+            const btnIntel = document.getElementById('btn-intel');
+            const headerAccent = document.getElementById('header-accent');
+
+            if (type === 'amd') {
+                btnAmd.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-brandOrange text-white shadow-lg shadow-brandOrange/20";
+                btnIntel.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white";
+                headerAccent.className = "text-brandOrange transition-colors duration-300";
+            } else {
+                btnIntel.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-brandBlue text-white shadow-lg shadow-brandBlue/20";
+                btnAmd.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white";
+                headerAccent.className = "text-brandBlue transition-colors duration-300";
+            }
+
+            updateLocationStyles();
+            renderPaginationControls();
+            renderPlans();
+        }
+
+        function renderPaginationControls() {
+            const wrapper = document.getElementById('pagination-wrapper');
+            const totalItems = plansData[currentCPU].length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            
+            let html = ``;
+            // Prev Arrow
+            html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} class="p-2 rounded bg-brandCard border border-gray-800 text-gray-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all">&lt;</button>`;
+            
+            // Numbers
+            const activeClass = currentCPU === 'amd' ? 'bg-brandOrange text-white' : 'bg-brandBlue text-white';
+            const inactiveClass = 'border border-gray-800 text-gray-400 hover:bg-brandCard/50';
+            
+            for(let i = 1; i <= totalPages; i++) {
+                html += `<button onclick="changePage(${i})" class="px-3.5 py-1.5 rounded text-sm font-bold transition-all duration-200 ${currentPage === i ? activeClass : inactiveClass}">${i}</button>`;
+            }
+
+            // Next Arrow
+            html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''} class="p-2 rounded bg-brandCard border border-gray-800 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all">&gt;</button>`;
+            
+            wrapper.innerHTML = html;
+        }
+
+        function changePage(pageNumber) {
+            const totalPages = Math.ceil(plansData[currentCPU].length / itemsPerPage);
+            if (pageNumber < 1 || pageNumber > totalPages) return;
+            currentPage = pageNumber;
+            renderPaginationControls();
+            renderPlans();
+        }
+
+        function renderPlans() {
+            const container = document.getElementById('plans-container');
             container.innerHTML = '';
-            plans.forEach(plan => {
-                const price = type === 'intel' ? plan.intel : plan.amd;
-                container.innerHTML += `
-                    <div class="card">
-                        <img src="${plan.gif}" class="card-bg-gif">
-                        <div class="plan-info">
-                            <div class="plan-name">${plan.name}</div>
-                            <div class="price-tag">
-                                <h3>₹${price}</h3>
-                                <span>/monthly</span>
-                            </div>
+
+            const allCpuPlans = plansData[currentCPU];
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const activePagePlans = allCpuPlans.slice(startIndex, endIndex);
+
+            activePagePlans.forEach((plan, index) => {
+                const textAccent = currentCPU === 'amd' ? 'text-brandOrange' : 'text-brandBlue';
+                const borderAccent = currentCPU === 'amd' ? 'hover:border-brandOrange/30' : 'hover:border-brandBlue/30';
+                const bgAccent = currentCPU === 'amd' ? 'bg-brandOrange' : 'bg-brandBlue';
+
+                const card = document.createElement('div');
+                card.className = `flex flex-col lg:flex-row items-start lg:items-center justify-between p-4.5 bg-brandCard/50 border border-gray-800/60 rounded-xl gap-4 ${borderAccent} transition-all duration-300 opacity-0 transform translate-y-2`;
+                
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3.5 min-w-[190px]">
+                        <div class="w-9 h-9 rounded-lg bg-gray-950/80 border border-gray-800 flex items-center justify-center text-xl shadow-inner">
+                            ${plan.emoji}
                         </div>
-                        <ul class="specs-list">
-                            <li><i class="fas fa-memory"></i> ${plan.ram} RAM</li>
-                            <li><i class="fas fa-microchip"></i> ${plan.cpu} CPU</li>
-                            <li><i class="fas fa-hdd"></i> ${plan.ssd} NVMe</li>
-                            <li><i class="fas fa-network-wired"></i> ${plan.ports} Ports</li>
-                            <li><i class="fas fa-shield-halved"></i> DDoS Protection</li>
-                        </ul>
-                        <button class="btn-buy" onclick="window.location.href='https://discord.com/channels/1331996056971641055/1457357769320698032'">
-                            <i class="fas fa-rocket"></i> Deploy Now
+                        <div class="flex flex-col">
+                            <span class="text-white font-extrabold text-sm tracking-wide uppercase">${plan.name}</span>
+                            <span class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">${plan.support} Support</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full lg:w-auto flex-1 max-w-2xl text-left">
+                        <div class="bg-brandDark/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                            <span class="text-gray-500 text-[10px] uppercase font-semibold">RAM</span>
+                            <span class="text-gray-200 font-bold">${plan.ram}</span>
+                        </div>
+                        <div class="bg-brandDark/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                            <span class="text-gray-500 text-[10px] uppercase font-semibold">CPU</span>
+                            <span class="text-gray-200 font-bold">${plan.cpu}</span>
+                        </div>
+                        <div class="bg-brandDark/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                            <span class="text-gray-500 text-[10px] uppercase font-semibold">SSD</span>
+                            <span class="text-gray-200 font-bold">${plan.ssd}</span>
+                        </div>
+                        <div class="bg-brandDark/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                            <span class="text-gray-500 text-[10px] uppercase font-semibold">Ports</span>
+                            <span class="text-gray-200 font-bold">${plan.ports}</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between lg:justify-end w-full lg:w-auto gap-6 pt-2 lg:pt-0 border-t border-gray-800/30 lg:border-t-0">
+                        <div class="flex flex-col text-right">
+                            <span class="text-sm font-black tracking-wide ${textAccent}">${plan.price}/mo</span>
+                            <span class="text-[10px] text-gray-500 line-through font-bold">₹${plan.oldPrice.replace('₹','')}</span>
+                        </div>
+                        <button class="w-full sm:w-auto px-5 py-2 rounded-lg text-xs font-bold text-white transition-all duration-300 ${bgAccent} hover:opacity-90 active:scale-95 whitespace-nowrap shadow-md">
+                            Deploy Server &gt;
                         </button>
                     </div>
                 `;
+                
+                container.appendChild(card);
+                
+                // Content transition sequence framework
+                setTimeout(() => {
+                    card.classList.remove('opacity-0', 'translate-y-2');
+                }, index * 60);
             });
         }
 
-        function updateCPU(type) {
-            const body = document.getElementById('mainBody');
-            const intelBtn = document.getElementById('intelBtn');
-            const amdBtn = document.getElementById('amdBtn');
-            
-            if(type === 'amd') {
-                body.className = 'amd-mode';
-                amdBtn.classList.add('active', 'amd');
-                intelBtn.classList.remove('active', 'intel');
-                document.getElementById('cpuBadge').innerText = 'AMD EPYC POWERED';
-                document.getElementById('heroTitle').innerHTML = 'Minecraft <span>AMD Hosting</span>';
-                document.getElementById('planHeader').innerText = 'CHOOSE YOUR AMD PLAN';
-                document.getElementById('cpuInfo').innerText = 'Maximum single-thread performance with AMD EPYC processors. Ideal for heavy modpacks and large player counts.';
-                renderPlans('amd');
-            } else {
-                body.className = 'intel-mode';
-                intelBtn.classList.add('active', 'intel');
-                amdBtn.classList.remove('active', 'amd');
-                document.getElementById('cpuBadge').innerText = 'INTEL XEON PERFORMANCE';
-                document.getElementById('heroTitle').innerHTML = 'Minecraft Server <span>Hosting</span>';
-                document.getElementById('planHeader').innerText = 'CHOOSE YOUR INTEL PLAN';
-                document.getElementById('cpuInfo').innerText = 'Deploy your server in seconds on enterprise Intel Xeon hardware. Advanced DDoS mitigation included.';
-                renderPlans('intel');
-            }
-        }
-
-        function createSnow() {
-            const snow = document.createElement('div');
-            snow.classList.add('snowflake');
-            snow.innerHTML = '❄';
-            snow.style.left = Math.random() * 100 + 'vw';
-            snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            snow.style.fontSize = (Math.random() * 10 + 10) + 'px';
-            document.body.appendChild(snow);
-            setTimeout(() => snow.remove(), 5000);
-        }
-
-        renderPlans('intel');
-        setInterval(createSnow, 150);
+        // Boot-up logic trigger sequence
+        switchCPU('amd');
     </script>
+</body>
+</html>
+
+    <!-- -------------------------------- BRANDS LOGO BAR -------------------------------- -->
+   <!-- INFINITE SLIDER COMPONENT (Exactly as running in your video) -->
+<div class="partner-slider-section">
+    <div class="slider-infinite-track">
+        
+        <!-- Track Set 1 -->
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="data:image/png;base64,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" alt="Intel"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Advanced_Micro_Devices_Logo.svg" alt="AMD"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Linux_Logo.glassy.svg" alt="Brand Logo"></div>
+
+        <!-- Track Set 2 (Exact duplication to achieve unnoticeable infinite loop transition) -->
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" alt="Intel"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Advanced_Micro_Devices_Logo.svg" alt="AMD"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Brand Logo"></div>
+        <div class="slider-item-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Linux_Logo.glassy.svg" alt="Brand Logo"></div>
+
+    </div>
+</div>
+
+<section class="global-network-section">
+    
+    <div class="network-left-globe">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWZqZ28yMzZvZmF1aHZnZWY4N2djZHdiMDBiaHdodGQya2lmYWJlcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/U4FkC2VqpeNRHjTDQ5/giphy.gif" alt="Global Network Globe">
+    </div>
+
+    <div class="network-right-content">
+        <span class="tagline">Global Infrastructure</span>
+        <h2>Worldwide <span>Server Nodes</span></h2>
+        <p>We host your services on extreme edge-network datacenters strategically placed across multiple countries. Enjoy lowest latency routing and unmatched speeds globally.</p>
+        
+        <div class="nodes-wrapper" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; width: 100%; margin-top: 20px; font-family: 'Poppins', sans-serif;">
+    
+    <div class="location-group-panel" style="background: rgba(10, 15, 30, 0.6); border: 1px solid rgba(59, 130, 246, 0.15); border-radius: 14px; padding: 20px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+        <h3 style="color: #38bdf8; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);">
+            <span style="width: 8px; height: 8px; background: #38bdf8; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #38bdf8;"></span>
+            India Locations
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/Pz1zk2Pd/in.jpg" alt="India" class="node-flag" />
+                    <div>
+                        <div class="node-name">Mumbai</div>
+                        <div class="node-country">India</div>
+                    </div>
+                </div>
+                <div class="ping-badge stable-ping">5–20 ms</div>
+            </div>
+
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/Pz1zk2Pd/in.jpg" alt="India" class="node-flag" />
+                    <div>
+                        <div class="node-name">Delhi</div>
+                        <div class="node-country">India</div>
+                    </div>
+                </div>
+                <div class="ping-badge stable-ping">10–25 ms</div>
+            </div>
+
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/Pz1zk2Pd/in.jpg" alt="India" class="node-flag" />
+                    <div>
+                        <div class="node-name">Hyderabad</div>
+                        <div class="node-country">India</div>
+                    </div>
+                </div>
+                <div class="ping-badge stable-ping">15–30 ms</div>
+            </div>
+
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/Pz1zk2Pd/in.jpg" alt="India" class="node-flag" />
+                    <div>
+                        <div class="node-name">Kolkata</div>
+                        <div class="node-country">India</div>
+                    </div>
+                </div>
+                <div class="ping-badge soon-ping">Soon</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="location-group-panel" style="background: rgba(10, 15, 30, 0.6); border: 1px solid rgba(59, 130, 246, 0.15); border-radius: 14px; padding: 20px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+        <h3 style="color: #3b82f6; font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);">
+            <span style="width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #3b82f6;"></span>
+            Global Locations
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/GvqNZCyh/sg.jpg" alt="Singapore" class="node-flag" />
+                    <div>
+                        <div class="node-name">Singapore</div>
+                        <div class="node-country">Singapore</div>
+                    </div>
+                </div>
+                <div class="ping-badge global-ping">35–55 ms</div>
+            </div>
+
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/Y73sJys5/de.jpg" alt="Germany" class="node-flag" />
+                    <div>
+                        <div class="node-name">Frankfurt</div>
+                        <div class="node-country">Germany</div>
+                    </div>
+                </div>
+                <div class="ping-badge global-ping">120–160 ms</div>
+            </div>
+
+            <div class="latency-row">
+                <div class="loc-meta">
+                    <img src="https://i.ibb.co/qMkpZZtd/ae.jpg" alt="Dubai" class="node-flag" />
+                    <div>
+                        <div class="node-name">Dubai</div>
+                        <div class="node-country">USA</div>
+                    </div>
+                </div>
+                <div class="ping-badge global-ping">40–70 ms</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<style>
+    /* Base Row Element Structural Styling */
+    .latency-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: rgba(17, 24, 39, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: 10px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .loc-meta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .node-flag {
+        width: 26px;
+        height: 18px;
+        object-fit: cover;
+        border-radius: 3px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .node-name {
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+
+    .node-country {
+        color: #9ca3af;
+        font-size: 0.75rem;
+        margin-top: 1px;
+    }
+
+    /* Status Metrics & Micro Glow Elements */
+    .ping-badge {
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 6px;
+        min-width: 85px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .stable-ping {
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .global-ping {
+        color: #60a5fa;
+        background: rgba(96, 165, 250, 0.1);
+        border: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .soon-ping {
+        color: #9ca3af;
+        background: rgba(156, 163, 175, 0.1);
+        border: 1px solid rgba(156, 163, 175, 0.2);
+    }
+
+    /* 🔥 High Performance Cyber Hover Animations */
+    .latency-row:hover {
+        transform: translateX(4px);
+        background: rgba(30, 41, 59, 0.8);
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(56, 189, 248, 0.08);
+    }
+
+    .latency-row:hover .stable-ping {
+        color: #ffffff;
+        background: #0284c7;
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        border-color: #38bdf8;
+    }
+
+    .latency-row:hover .global-ping {
+        color: #ffffff;
+        background: #2563eb;
+        box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
+        border-color: #60a5fa;
+    }
+</style>
+        
+</section>
+
+
+    <!-- ------------------------ ADVANCED FEATURES SECTION ------------------------ -->
+   <!-- =========================================================================
+     [PART 1]: ADVANCED FEATURES CENTERED HEADER
+     ========================================================================= -->
+<div class="custom-premium-header-section">
+    <div class="premium-header-wrapper">
+        
+        <!-- Left Side: Cloud Sticker -->
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3hsYjkxc2QweGRzNnlydWpmZmJvczdyeTBqMHNkNWVjdTNucXFmMyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/V4ErRLRQG2lfKOjIht/giphy.gif" class="header-sticker cloud-left" alt="Cloud">
+        
+        <!-- Center Content -->
+        <div class="header-text-block">
+            <span class="premium-sub-tag">WE WON'T DISAPPOINT</span>
+            <h2 class="premium-main-title">Advanced <span>Features</span></h2>
+        </div>
+        
+        <!-- Right Side: Show/Star Sticker -->
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXVjMWptYmh5bm1xbmpuZGs1YmVubjFncXpvaDlzMjJrZDc1aW0ydCZlcD12MV9internalF9naWZfYnlfaWQmY3Q9cw/H1YGuEsxFy10JPPdah/giphy.gif" class="header-sticker show-right" alt="Star Show">
+        
+    </div>
+</div>
+
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h4>High Performance</h4>
+            <p>Powered by latest generation hardware processors optimized perfectly for intense game computing and massive server loads.</p>
+        </div>
+       
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <h4>Low Latency</h4>
+            <p>Optimized edge-network infrastructure across worldwide data routes for minimal network lag and blazing fast response times.</p>
+        </div>
+
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h4>Advanced Security</h4>
+            <p>Our infrastructure is protected by multi-layered custom firewalls and filtering layers to keep bad vectors and attacks far away.</p>
+        </div>
+        
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <h4>Resource Scaling</h4>
+            <p>Dynamic resource allocation based on server demands</p>
+        </div>
+        
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <h4>Auto Recovery</h4>
+            <p>Smart backup protocols and automatic node transfers keep data absolutely secure at all costs.</p>
+        </div>
+        
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <h4>Full Control</h4>
+            <p>Complete server control panel with advanced configuration options</p>
+        </div>
+
+        <div class="adv-card-premium">
+            <div class="card-icon-fixed">
+                <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <h4>Global Network</h4>
+            <p>Worldwide server locations for optimal connectivity</p>
+        </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+     COREMMC HOSTING INTERACTIVE FAQ SECTION WITH EXACT IMAGE LINK
+     ========================================================================= -->
+<style>
+    /* Main FAQ Section Wrapper */
+    .faq-section-wrapper {
+        padding: 80px 8%;
+        background-color: #070913;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Core Layout: Left Image Area, Right Accordion Area */
+    .faq-grid-layout {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    /* Left Side Vector Illustration Container */
+    .faq-left-vector {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .faq-left-vector img {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        animation: smoothFloatFAQ 4s ease-in-out infinite;
+    }
+
+    /* Right Side Heading Typography */
+    .faq-right-content .faq-header-block {
+        margin-bottom: 35px;
+    }
+
+    .faq-right-content .faq-header-block h2 {
+        font-size: 40px;
+        font-weight: 800;
+        margin: 0 0 10px 0;
+        letter-spacing: 0.5px;
+    }
+
+    .faq-right-content .faq-header-block h2 span {
+        color: #38bdf8;
+    }
+
+    .faq-right-content .faq-header-block p {
+        color: #94a3b8;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    /* Accordion Main Structure */
+    .faq-accordion-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Individual FAQ Item Style matching reference "Screenshot 2026-06-11 135152_2.png" */
+    .faq-item-block {
+        background: rgba(15, 23, 42, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faq-item-block:hover {
+        border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    /* Active Open Accordion State styling */
+    .faq-item-block.active-faq {
+        border-color: rgba(37, 99, 235, 0.5);
+        background: rgba(15, 23, 42, 0.55);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Trigger Button Wrapper */
+    .faq-trigger-btn {
+        width: 100%;
+        background: transparent;
+        border: none;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        text-align: left;
+        color: #ffffff;
+        gap: 15px;
+    }
+
+    /* Left Row: Index number box + Title text */
+    .faq-title-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Serial Number Badge Style */
+    .faq-index-badge {
+        font-family: monospace;
+        font-size: 14px;
+        font-weight: 700;
+        color: #2563eb;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+        padding: 4px 8px;
+        border-radius: 6px;
+        min-width: 28px;
+        text-align: center;
+    }
+
+    .faq-trigger-btn h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: 0.3px;
+        transition: color 0.3s ease;
+    }
+
+    .faq-item-block.active-faq .faq-trigger-btn h4 {
+        color: #38bdf8;
+    }
+
+    /* Right Side Arrow Icon element */
+    .faq-arrow-icon {
+        color: #94a3b8;
+        font-size: 14px;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item-block.active-faq .faq-arrow-icon {
+        transform: rotate(90deg); /* Arrow rotates downwards when active */
+        color: #38bdf8;
+    }
+
+    /* Collapsible Content Area (Hidden by default with animation tracking) */
+    .faq-body-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-inner-text {
+        padding: 0 20px 20px 63px; /* Properly aligns answer text under the question */
+        color: #cbd5e1;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Soft floating animation loop */
+    @keyframes smoothFloatFAQ {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Responsive Engine */
+    @media (max-width: 992px) {
+        .faq-grid-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .faq-left-vector {
+            order: -1; /* Puts image on top for mobile views */
+        }
+        .faq-left-vector img {
+            max-width: 280px;
+        }
+    }
+</style>
+
+<section class="faq-section-wrapper">
+    <div class="faq-grid-layout">
+        
+        <!-- Left Side: Custom Vector Artwork URL Provided -->
+        <div class="faq-left-vector">
+            <img src="https://votex-root.netlify.app/_next/image?url=%2Ffeature-9.webp&w=1920&q=75" alt="CoreMMC Help Support Vector">
+        </div>
+
+        <!-- Right Side: Interactive Content -->
+        <div class="faq-right-content">
+            <div class="faq-header-block">
+                <h2>Frequently Asked <span>Questions</span></h2>
+                <p>Find answers to common questions about our game server hosting services</p>
+            </div>
+
+            <div class="faq-accordion-container">
+
+                <!-- Question 01 -->
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <div class="faq-title-row">
+                            <span class="faq-index-badge">01</span>
+                            <h4>How do I get started with game server hosting?</h4>
+                        </div>
+                        <i class="fa-solid fa-chevron-right faq-arrow-icon"></i>
+                    </button>
+                    <div class="faq-body-panel">
+                        <div class="faq-inner-text">
+                            Getting started with CoreMMC Hosting is incredibly quick! Choose your preferred game server configuration or hosting plan from our pricing tables, complete the secure checkout process, and our automated provisioning system will instantly build and deploy your instance. You will receive an onboarding email containing access credentials to your dedicated game control panel immediately.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 02 -->
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <div class="faq-title-row">
+                            <span class="faq-index-badge">02</span>
+                            <h4>What kind of support do you provide?</h4>
+                        </div>
+                        <i class="fa-solid fa-chevron-right faq-arrow-icon"></i>
+                    </button>
+                    <div class="faq-body-panel">
+                        <div class="faq-inner-text">
+                            CoreMMC Hosting delivers elite 24/7 technical assistance. Our specialized support crew is fully equipped to handle configuration bugs, server performance tune-ups, and deployment queries. You can easily reach out to us by opening a direct ticket inside our secure client portal dashboard or joining our active community Discord server for rapid assistance.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 03 -->
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <div class="faq-title-row">
+                            <span class="faq-index-badge">03</span>
+                            <h4>Can I modify server settings and configurations?</h4>
+                        </div>
+                        <i class="fa-solid fa-chevron-right faq-arrow-icon"></i>
+                    </button>
+                    <div class="faq-body-panel">
+                        <div class="faq-inner-text">
+                            Absolutely! You maintain 100% full root access and complete control file oversight through our custom management workspace panel. You are free to modify backend settings, install custom mods or plugins, handle sub-user permissions, upload directory files via secure SFTP, and customize the game dynamics exactly the way your community wants.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 04 -->
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <div class="faq-title-row">
+                            <span class="faq-index-badge">04</span>
+                            <h4>What payment methods do you accept?</h4>
+                        </div>
+                        <i class="fa-solid fa-chevron-right faq-arrow-icon"></i>
+                    </button>
+                    <div class="faq-body-panel">
+                        <div class="faq-inner-text">
+                            We accept an extensive range of reliable payment methods to keep your renewals completely frictionless. You can pay securely using all major Credit Cards, Debit Cards, PayPal, UPI, Net Banking, and regional localized gateways, providing you with a safe and encrypted transaction layer.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 05 -->
+                <div class="faq-item-block">
+                    <button class="faq-trigger-btn">
+                        <div class="faq-title-row">
+                            <span class="faq-index-badge">05</span>
+                            <h4>Do you offer DDoS protection?</h4>
+                        </div>
+                        <i class="fa-solid fa-chevron-right faq-arrow-icon"></i>
+                    </button>
+                    <div class="faq-body-panel">
+                        <div class="faq-inner-text">
+                            Yes, security is a core standard. Every node deployed under CoreMMC Hosting infrastructure comes integrated with advanced multi-layered enterprise DDoS mitigation filters. Our systems actively intercept, scan, and filter malicious traffic surges automatically before they ever hit your game instance, guaranteeing a persistent 99.9% uptime and zero server-side disruption.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================================
+     JAVASCRIPT ACCORDION LOGIC ENGINE 
+     ========================================================================= -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item-block");
+
+        faqItems.forEach(item => {
+            const triggerBtn = item.querySelector(".faq-trigger-btn");
+            const bodyPanel = item.querySelector(".faq-body-panel");
+
+            triggerBtn.addEventListener("click", function () {
+                const isOpen = item.classList.contains("active-faq");
+
+                // Close all other open FAQ items first (Accordion Mode)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove("active-faq");
+                        otherItem.querySelector(".faq-body-panel").style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item state
+                if (isOpen) {
+                    item.classList.remove("active-faq");
+                    bodyPanel.style.maxHeight = null;
+                } else {
+                    item.classList.add("active-faq");
+                    // Calculates dynamic inner content height for a beautiful fluid sliding animation
+                    bodyPanel.style.maxHeight = bodyPanel.scrollHeight + "px";
+                }
+            });
+        });
+    });
+</script>
+
+    <!-- =========================================================================
+     EXACT PREMIUM DISCORD BANNER SECTION WITH FLOATING MASCOTS
+     ========================================================================= -->
+<style>
+    /* Main Section Container spacing */
+    .discord-banner-wrapper {
+        padding: 40px 8%;
+        background-color: #070913;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Core Banner Design Mapping reference "Screenshot 2026-06-11 132102.png" */
+    .discord-core-card {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important; /* Premium Blue Core Tone */
+        border-radius: 16px !important;
+        padding: 45px 50px !important;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        z-index: 1;
+        text-decoration: none !important; /* Pure card clickable behavior setup */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 10px 30px rgba(29, 78, 216, 0.25);
+    }
+
+    .discord-core-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(29, 78, 216, 0.4);
+    }
+
+    /* Left Side Elements Configuration */
+    .discord-left-layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 25px;
+        max-width: 65%;
+        z-index: 3;
+    }
+
+    /* Left Floating Small Mascot */
+    .mascot-left-mini {
+        width: 75px;
+        height: auto;
+        object-fit: contain;
+        animation: miniFloat 3s ease-in-out infinite;
+        filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    }
+
+    /* Left Side Content Typography */
+    .discord-text-block h2 {
+        font-size: 42px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        margin: 0 0 15px 0 !important;
+        letter-spacing: 0.5px;
+    }
+
+    .discord-text-block h2 span {
+        color: #38bdf8 !important; /* Cyan pop text style */
+    }
+
+    .discord-text-block p {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 16px !important;
+        line-height: 1.5 !important;
+        margin: 0 0 6px 0 !important;
+        font-weight: 500;
+    }
+
+    .discord-text-block span.sub-info {
+        color: rgba(255, 255, 255, 0.65) !important;
+        font-size: 14px !important;
+        display: block;
+    }
+
+    /* Right Side Elements Configuration */
+    .discord-right-layout {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        z-index: 3;
+    }
+
+    /* Join Us Interactive Button Logo Badge */
+    .discord-join-badge {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 14px 24px;
+        border-radius: 12px;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .discord-join-badge img.discord-logo-vector {
+        width: 32px;
+        height: auto;
+    }
+
+    .discord-join-badge .badge-texts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .discord-join-badge .badge-texts span:first-child {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .discord-join-badge .badge-texts span:last-child {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    .discord-core-card:hover .discord-join-badge {
+        background: rgba(0, 0, 0, 0.35);
+        transform: scale(1.03);
+    }
+
+    /* Right Side Big Headphone Mascot */
+    .mascot-right-big {
+        width: 140px;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: -45px; /* Cards line border cutting effect like reference */
+        align-self: flex-end;
+        animation: bigFloat 4s ease-in-out infinite;
+        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    }
+
+    /* Faded Watermark Logos scattered in background */
+    .discord-core-card::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background: url('https://i.ibb.co/B2Tg6dwy/photo-2026-06-11-13-42-40.jpg') no-repeat center/contain;
+        opacity: 0.08;
+        pointer-events: none;
+    }
+
+    .discord-core-card::after {
+        content: '';
+        position: absolute;
+        bottom: 15px;
+        left: 45%;
+        width: 70px;
+        height: 70px;
+        background: url('https://i.ibb.co/B2Tg6dwy/photo-2026-06-11-13-42-40.jpg') no-repeat center/contain;
+        opacity: 0.06;
+        pointer-events: none;
+    }
+
+    /* Animations Vectors Loops */
+    @keyframes miniFloat {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-6px) rotate(3deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes bigFloat {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Fully Responsive Optimization for Mobile viewports */
+    @media (max-width: 992px) {
+        .discord-core-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 35px;
+            padding: 40px 30px !important;
+        }
+        .discord-left-layout {
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            gap: 15px;
+        }
+        .discord-right-layout {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        .mascot-right-big {
+            margin-bottom: -40px;
+            align-self: center;
+            width: 110px;
+        }
+    }
+</style>
+
+<!-- Functional DOM Grid Architecture Injection -->
+<section class="discord-banner-wrapper">
+    <a href="https://discord.gg/VFK39KWNC" target="_blank" class="discord-core-card">
+        
+        <!-- Left Section Panel -->
+        <div class="discord-left-layout">
+            <!-- First Mascot Image Link Applied to Left Side -->
+            <img src="https://i.ibb.co/4ny7LS0k/photo-2026-06-11-13-43-57.jpg" alt="Discord Small Mascot" class="mascot-left-mini">
+            
+            <div class="discord-text-block">
+                <h2>Join Our <span>Discord</span></h2>
+                <p>Connect with our community of gamers and developers</p>
+                <span class="sub-info">Get instant support, share experiences, and stay updated with the latest news</span>
+            </div>
+        </div>
+
+        <!-- Right Section Panel -->
+        <div class="discord-right-layout">
+            <!-- Center Vector Badge Integration Box -->
+            <div class="discord-join-badge">
+                <img src="https://i.ibb.co/B2Tg6dwy/photo-2026-06-11-13-42-40.jpg" alt="Discord Logo" class="discord-logo-vector">
+                <div class="badge-texts">
+                    <span>Join Us On</span>
+                    <span>DISCORD</span>
+                </div>
+            </div>
+
+            <!-- Third Headphone Mascot Image Link Applied to Right Bottom Side -->
+            <img src="https://i.ibb.co/sd32wMvg/photo-2026-06-11-13-46-39.jpg" alt="Discord Big Mascot" class="mascot-right-big">
+        </div>
+
+    </a>
+</section>
+        
+    <!-- -------------------------------- FOOTER -------------------------------- -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-desc">
+                <img src="https://i.ibb.co/KzF67sFZ/copilot-image-1761965106943.png" alt="CoreMMC Hosting" height="35">
+                <p>Premium hosting systems engineered with love for performance seekers and developers across the globe.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="#">Client Area</a></li>
+                    <li><a href="CoreMMC-Bot-Hosting.html">Discord Bot Hosting</a></li>
+                    <li><a href="CoreMMC-VPS-Hosting.html">VPS Hosting</a></li>
+                    <li><a href="CoreMMC-MC-Hosting.html">Minecraft Hosting</a></li>
+                    <li><a href="CoreMMC-Hytale.html">Hytale Hosting</a></li>
+                    <li><a href="CoreMMC-Web-Hosting.html">Web Hosting</a></li>
+                    <li><a href="#">CoreShield</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Legal Links</h5>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Contact Us</h5>
+                <ul style="color: var(--text-muted); font-size: 14px;">
+                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-envelope" style="color: var(--accent);"></i> support@coremmc.com</li>
+                    <li><i class="fa-brands fa-discord" style="color: #5865F2;"></i> https://discord.gg/rhWqkRuHthc</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 CoreMMC Hosting. All rights reserved.</p>
+            <p>Designed with ❤️ for Gamers</p>
+        </div>
+    </footer>
+
+    <!-- Text Switcher Animation Script for Hero Section Text Changer -->
+    </script>
+    <!-- =========================================================================
+     PASTE THIS CODE JUST BEFORE YOUR CLOSING </body> TAG (BELOW OLD SCRIPT)
+     ========================================================================= -->
+
+<!-- CSS Modifications & Snow Container -->
+<style>
+    /* Top Navbar text modification (First Red Mark Area) */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .logo::after {
+        content: 'CoreMMC Hosting';
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #ffffff 40%, var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+    }
+
+    /* Dynamic Hero Area Background Controller (Third Red Mark Se Upar Ka Area) */
+    .hero-container {
+        position: relative;
+        overflow: hidden;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: background-image 0.8s ease-in-out;
+        z-index: 1;
+    }
+
+    /* Dark gradient overlay so text remains perfectly readable on dynamic backgrounds */
+    .hero-container::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(7, 9, 19, 0.85) 0%, rgba(7, 9, 19, 0.95) 100%);
+        z-index: -1;
+        transition: all 0.5s;
+    }
+
+    /* Third Red Mark Line (Separation border just above brands logo) */
+    .hero-container {
+        border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Dynamic changing heading style (Second Red Mark Area) */
+    .dynamic-txt {
+        display: inline-block;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        color: var(--accent) !important;
+        text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Dot Snow Falling Canvas Area */
+    #snow-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    .hero-left, .hero-right {
+        position: relative;
+        z-index: 2;
+    }
+</style>
+
+<!-- Canvas Element for Dot Snow Effect -->
+<canvas id="snow-canvas"></canvas>
+
+<!-- Main Execution Logic Overriding Old Animation Loop -->
+<script>
+    (function() {
+        // Data containing text changes and matching background links provided by you
+        const rotationData = [
+            { text: "Discord Bots", bg: "https://i.ibb.co/VYXb1jv3/image-search-1781151058394.png" },
+            { text: "VPS Servers", bg: "https://i.ibb.co/0V1ZZzjw/image-search-1781150727343.png" },
+            { text: "Minecraft Servers", bg: "https://i.ibb.co/kVDqwL83/image-search-1781150799627.jpg" },
+            { text: "Web Servers", bg: "https://i.ibb.co/d4mh6P2G/image-search-1781150868415.jpg" },
+            { text: "Hytale Servers", bg: "https://i.ibb.co/7JxLkB4R/image-search-1781150921963.jpg" }
+        ];
+
+        let dataIndex = 0;
+        const textElement = document.getElementById("dynamic-game");
+        const heroSection = document.querySelector(".hero-container");
+
+        // Function to handle seamless background and text transitions
+        function updateHeroSlide() {
+            if (!textElement || !heroSection) return;
+
+            // Fade out animation sequence
+            textElement.style.opacity = "0";
+            textElement.style.transform = "translateY(-10px)";
+
+            setTimeout(() => {
+                dataIndex = (dataIndex + 1) % rotationData.length;
+                const current = rotationData[dataIndex];
+
+                // Setting text contents and changing background image smoothly
+                textElement.textContent = current.text;
+                heroSection.style.backgroundImage = `url('${current.bg}')`;
+
+                // Fade back in animation sequence
+                textElement.style.opacity = "1";
+                textElement.style.transform = "translateY(0)";
+            }, 350);
+        }
+
+        // Initialize First Background immediately
+        if (heroSection) {
+            heroSection.style.backgroundImage = `url('${rotationData[0].bg}')`;
+        }
+
+        // Run rotation loop every 4 seconds
+        setInterval(updateHeroSlide, 4000);
+
+        // --- DOT SNOW FALLING SYSTEM LOGIC ---
+        const canvas = document.getElementById('snow-canvas');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = heroSection.offsetWidth;
+            let height = canvas.height = heroSection.offsetHeight;
+
+            // Resize handle to keep canvas scaling perfect
+            window.addEventListener('resize', () => {
+                if (heroSection) {
+                    width = canvas.width = heroSection.offsetWidth;
+                    height = canvas.height = heroSection.offsetHeight;
+                }
+            });
+
+            const numFlakes = 65; // Density control for smooth dot particles
+            const flakes = [];
+
+            for (let i = 0; i < numFlakes; i++) {
+                flakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2 + 1, // Tiny clean dots
+                    d: Math.random() * numFlakes, // Density config
+                    speed: Math.random() * 1 + 0.5 // Gentle velocity
+                });
+            }
+
+            function drawSnowflakes() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
+                ctx.beginPath();
+                
+                for (let i = 0; i < numFlakes; i++) {
+                    const f = flakes[i];
+                    ctx.moveTo(f.x, f.y);
+                    ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+
+                    // Update loop positions for snow behavior
+                    f.y += f.speed;
+                    f.x += Math.sin(f.d / 10) * 0.3; // Light sway
+
+                    // Loop reset mechanics when reaching bottom line boundary
+                    if (f.y > height) {
+                        flakes[i] = { x: Math.random() * width, y: 0, r: f.r, d: f.d, speed: f.speed };
+                    }
+                }
+                ctx.fill();
+                requestAnimationFrame(drawSnowflakes);
+            }
+            drawSnowflakes();
+        }
+    })();
+</script>
+    <style>
+/* =========================================================================
+   PERFECT TEXT SIZE & GRADIENT COLOR FIX 
+   ========================================================================= */
+
+/* 1. Base Heading (Host your own) ka size aur spacing fix */
+.hero-left h1 {
+    font-size: 76px !important; 
+    line-height: 1.15 !important;
+    font-weight: 800 !important;
+    margin-bottom: 24px !important;
+}
+
+/* 2. Dynamic Text ka Animation, Size aur original Colors Restoration */
+.dynamic-txt {
+    font-size: 76px !important; 
+    font-weight: 800 !important;
+    color: transparent !important; 
+    background: linear-gradient(135deg, #ffffff, var(--accent)) !important; 
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-stroke: 0px transparent !important; 
+    display: inline-block !important;
+}
+
+/* 3. Layout Wrapper Height Adjustments */
+.dynamic-wrapper {
+    height: 95px !important; 
+    display: block !important;
+    overflow: hidden !important;
+}
+
+/* 4. Responsive Support - Chhote Mobile screens */
+@media (max-width: 768px) {
+    .hero-left h1, .dynamic-txt {
+        font-size: 42px !important;
+    }
+    .dynamic-wrapper {
+        height: 55px !important;
+    }
+}
+</style>
+    </script>
+    <style>
+    /* Hero container ke background overlay ko ekdum smooth aur bright karne ke liye */
+    .hero-container::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        /* Kale rang ko kam kiya (0.85 se 0.45) taaki piche ki image saaf chamke */
+        background: linear-gradient(180deg, rgba(7, 9, 19, 0.45) 0%, rgba(7, 9, 19, 0.6) 100%) !important;
+        
+        /* Halka blur effect jaisa aapne bola */
+        backdrop-filter: blur(3px) !important; 
+        -webkit-backdrop-filter: blur(3px) !important;
+        
+        z-index: -1 !important;
+    }
+
+    /* Piche ki background image poori tarah se cover aur saaf dikhne ke liye */
+    .hero-container {
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+    }
+</script>
+<style>
+    /* Section Main Wrapper Configuration */
+    .features-section-fixed {
+        padding: 80px 8%;
+        background-color: #070913;
+        color: #ffffff;
+    }
+
+    /* Target Header Alignment */
+    .features-section-fixed .tagline {
+        color: #2563eb;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .features-section-fixed .section-title {
+        font-size: 38px;
+        font-weight: 800;
+        margin-bottom: 50px;
+    }
+
+    .features-section-fixed .section-title span {
+        color: #38bdf8;
+    }
+
+    /* GRID MATRIX: Strictly 3 cards in 1 single line row */
+    .features-grid-fixed {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 28px !important;
+    }
+
+    /* Premium Sleek Card Core Design */
+    .adv-card-premium {
+        position: relative;
+        background: linear-gradient(145deg, rgba(15, 23, 42, 0.4), rgba(8, 12, 27, 0.6)) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        padding: 35px 30px !important;
+        border-radius: 16px !important;
+        overflow: hidden; /* Latakte hue neon flower aur circles ko card me trim rakhne ke liye */
+        z-index: 1;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    /* Premium Glow Border Hover Feedback */
+    .adv-card-premium:hover {
+        transform: translateY(-6px) !important;
+        border-color: rgba(56, 189, 248, 0.35) !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(37, 99, 235, 0.15) !important;
+    }
+
+    /* PREMIUM ACCENT LIGHT/FLOWER PATTERN (Top right latakta hua element) */
+    .adv-card-premium::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        width: 90px;
+        height: 90px;
+        /* Sleek neon radial aura pattern replicating the reference picture flower burst */
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(37, 99, 235, 0.1) 40%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(5px);
+        pointer-events: none;
+        z-index: -1;
+        transition: transform 0.4s ease, background 0.4s ease;
+    }
+
+    /* Replicating the sharp hanging center node particle of the flower light flare */
+    .adv-card-premium::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), transparent);
+        border-bottom-left-radius: 100%; /* Hanging curve corner style */
+        border-left: 1px solid rgba(56, 189, 248, 0.3);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Boost neon flower flare aura size on card mouse hover */
+    .adv-card-premium:hover::before {
+        transform: scale(1.3);
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 70%);
+    }
+
+    /* Inside Content Icons Grid Container styling */
+    .adv-card-premium .card-icon-fixed {
+        width: 52px;
+        height: 52px;
+        background: rgba(37, 99, 235, 0.12) !important;
+        border: 1px solid rgba(56, 189, 248, 0.15);
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #38bdf8 !important; /* Premium Cyan */
+        font-size: 22px !important;
+        margin-bottom: 24px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .adv-card-premium h4 {
+        font-size: 19px !important;
+        font-weight: 700 !important;
+        margin-bottom: 12px !important;
+        color: #ffffff !important;
+        letter-spacing: 0.3px;
+    }
+
+    .adv-card-premium p {
+        color: #94a3b8 !important; /* Muted silver gray text */
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Fully Responsive View Adjustments */
+    @media (max-width: 1024px) {
+        .features-grid-fixed {
+            grid-template-columns: repeat(2, 1fr) !important; /* Tablets me 2 cards */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .features-section-fixed {
+            padding: 50px 4%;
+        }
+        .features-grid-fixed {
+            grid-template-columns: 1fr !important; /* Mobiles me perfect 1 card layout vertical stacking */
+            gap: 20px !important;
+        }
+    }
+</style>
+    </div>
+</script>
+ <style>
+    /* 1. Main Pricing section ka background halka bright aur transparent kiya */
+    .pricing-section {
+        background-color: rgba(7, 9, 19, 0.75) !important;
+        backdrop-filter: blur(4px) !important;
+        -webkit-backdrop-filter: blur(4px) !important;
+    }
+
+    /* 2. Cards ke andar ka background aur glass look block kiya */
+    .price-card {
+        background-color: rgba(15, 23, 42, 0.35) !important; /* Kaala rang bohot kam kiya */
+        border: 1px solid rgba(255, 255, 255, 0.12) !important; /* Border thodi aur saaf dikhegi */
+        backdrop-filter: blur(6px) !important; /* Cards ke andar halka premium blur */
+        -webkit-backdrop-filter: blur(6px) !important;
+    }
+
+    /* 3. Card ke piche ki images ko 100% visible aur bright karne ke liye */
+    .price-card::before {
+        opacity: 0.55 !important; /* Image ki brightness badha di (pehle 0.25 thi) */
+        transition: opacity 0.3s ease !important;
+    }
+
+    /* Card par mouse le jaane par image aur zyada saaf chamkegi */
+    .price-card:hover::before {
+        opacity: 0.75 !important;
+    }
+
+    /* 4. Card ke andar ka jo kaala filter (gradient) tha use ekdum halka kiya */
+    .price-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        /* Sirf niche ki side halka dark tint taaki button aur text visible rahe */
+        background: linear-gradient(180deg, rgba(7, 9, 19, 0.1) 0%, rgba(7, 9, 19, 0.5) 100%) !important;
+        z-index: -1 !important;
+    }
+</style>
+ <!-- =========================================================================
+     COREMMC HOSTING - COMPLETE CENTERED HEADERS WITH FLOATING STICKERS
+     ========================================================================= -->
+
+<style>
+    /* =========================================================================
+       GLOBAL CSS STYLING ENGINE FOR HEADERS & STICKERS
+       ========================================================================= */
+
+    /* Main section container to enforce absolute alignment */
+    .custom-premium-header-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+        background: transparent;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* Flexbox wrapper keeping stickers and texts locked in perfect symmetry */
+    .premium-header-wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 35px; /* Distance between text and stickers */
+        max-width: 95%;
+    }
+
+    /* Central Text styling configuration */
+    .header-text-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Small top taglines styling matching your design theme */
+    .premium-sub-tag {
+        color: #2563eb !important; /* Vibrant Blue color */
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 10px !important;
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* Main Heading Title typography */
+    .premium-main-title {
+        font-size: 42px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.5px !important;
+        font-family: system-ui, -apple-system, sans-serif;
+        white-space: nowrap;
+    }
+
+    /* Sky Blue accent highlight color */
+    .premium-main-title span {
+        color: #38bdf8 !important;
+    }
+
+    /* Base properties for all stickers */
+    .header-sticker {
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        display: block;
+    }
+
+    /* Individual setup for Cloud Stickers (Left Side) */
+    .header-sticker.cloud-left {
+        width: 75px;
+        animation: premiumCloudWobble 4s ease-in-out infinite;
+        filter: drop-shadow(0 8px 16px rgba(56, 189, 248, 0.25));
+    }
+
+    /* Individual setup for Show Stars Stickers (Right Side) */
+    .header-sticker.show-right {
+        width: 70px;
+        animation: premiumStarFloat 3.5s ease-in-out infinite;
+        filter: drop-shadow(0 8px 16px rgba(37, 99, 235, 0.3));
+    }
+
+    /* =========================================================================
+       KINETIC ANIMATION KEYFRAMES (Khoob Acche Waale Animations)
+       ========================================================================= */
+
+    /* Smooth drifting floating motion for clouds */
+    @keyframes premiumCloudWobble {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-12px) rotate(-3deg);
+        }
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+    }
+
+    /* Rhythmic pulse and lift motion for stars */
+    @keyframes premiumStarFloat {
+        0% {
+            transform: translateY(0px) scale(1);
+        }
+        50% {
+            transform: translateY(-15px) scale(1.06) rotate(6deg);
+        }
+        100% {
+            transform: translateY(0px) scale(1);
+        }
+    }
+
+    /* Responsive adjustment layer for mobile displays */
+    @media (max-width: 768px) {
+        .premium-header-wrapper {
+            gap: 15px;
+        }
+        .premium-main-title {
+            font-size: 28px !important;
+            white-space: normal !important; /* Wrap line smoothly on tiny screens */
+        }
+        .header-sticker.cloud-left {
+            width: 45px;
+        }
+        .header-sticker.show-right {
+            width: 42px;
+        }
+    }
+</style>
+</script>
+    <style>
+    /* Global resetting just to ensure layout precision */
+    .custom-premium-nav {
+        width: 100%;
+        background-color: #070913;
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    /* ----------------------------------------------------
+       LEFT SIDE: LOGO TEXT WRAPPER + STICKER
+       ---------------------------------------------------- */
+    .nav-logo-block {
+        display: flex;
+        align-items: center;
+        gap: 12px; /* Space for the sticker */
+        text-decoration: none !important;
+        position: relative;
+    }
+
+    .nav-logo-text {
+        font-size: 26px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        letter-spacing: -0.5px;
+        margin: 0 !important;
+    }
+
+    .nav-logo-text span {
+        color: #38bdf8 !important; /* Sky Blue accent color */
+    }
+
+    /* Logo Side: Cloud Sticker [2] Configuration */
+    .nav-logo-sticker {
+        width: 42px; /* Small clean navbar fit size */
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        animation: navStickerFloat 3s ease-in-out infinite;
+        filter: drop-shadow(0 4px 8px rgba(56, 189, 248, 0.25));
+    }
+
+    /* ----------------------------------------------------
+       RIGHT SIDE: CLIENT AREA BUTTON + STICKER
+       ---------------------------------------------------- */
+    .nav-right-block {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Distance between button and star sticker */
+        position: relative;
+    }
+
+    /* Premium Client Area Button Styling */
+    .nav-client-btn {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+        color: #ffffff !important;
+        padding: 10px 22px !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .nav-client-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Client Area Side: Show Star Sticker [1] Configuration */
+    .nav-client-sticker {
+        width: 38px; /* Perfectly scaled star badge */
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        animation: navStarWobble 3.5s ease-in-out infinite;
+        filter: drop-shadow(0 4px 10px rgba(37, 99, 235, 0.3));
+    }
+
+    /* ----------------------------------------------------
+       SMOOTH KINETIC ANIMATIONS FOR NAVBAR CONTEXT
+       ---------------------------------------------------- */
+    @keyframes navStickerFloat {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-5px) rotate(-3deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes navStarWobble {
+        0% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-6px) scale(1.05) rotate(5deg); }
+        100% { transform: translateY(0px) scale(1); }
+    }
+
+    /* Responsive scaling behavior for small screen devices */
+    @media (max-width: 600px) {
+        .custom-premium-nav {
+            padding: 15px 4%;
+        }
+        .nav-logo-text { font-size: 22px !important; }
+        .nav-logo-sticker { width: 32px; }
+        .nav-client-sticker { width: 28px; }
+        .nav-client-btn { padding: 8px 16px !important; font-size: 13px !important; }
+    }
+</style>
+
+    <!-- =========================================================================
+     MINECRAFT HERO SECTION WITH FLOATING CORNER CLOUD STICKERS
+     ========================================================================= -->
+
+<style>
+    /* Hero Section main wrapper */
+    .hero-premium-container {
+        width: 100%;
+        background: #0b0d19 url('YOUR_MINECRAFT_BACKGROUND_IMAGE_URL') no-repeat center center / cover;
+        padding: 80px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, sans-serif;
+        color: #ffffff;
+        overflow: hidden;
+    }
+
+    /* Left Side Content Grid */
+    .hero-left-content {
+        max-width: 50%;
+    }
+
+    .hero-left-content span {
+        color: #94a3b8;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .hero-left-content h1 {
+        font-size: 54px !important;
+        font-weight: 800 !important;
+        color: #38bdf8 !important; /* Premium Minecraft Blue */
+        margin: 10px 0 20px 0 !important;
+    }
+
+    .hero-left-content p {
+        color: #cbd5e1;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    /* Interactive Buttons Container */
+    .hero-btn-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    /* Get Started Button Wrapper for Stickers positioning */
+    .get-started-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .btn-get-started {
+        background: #2563eb;
+        color: #ffffff;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+    }
+
+    .btn-learn-more {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    /* ----------------------------------------------------
+       RIGHT SIDE: 2x2 CARDS GRID LAYOUT
+       ---------------------------------------------------- */
+    .hero-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: 50%;
+    }
+
+    /* Main Feature Card configuration */
+    .feature-card {
+        background: rgba(15, 23, 42, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        padding: 25px;
+        border-radius: 14px;
+        position: relative; /* Fixed point for absolute stickers */
+    }
+
+    .card-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .card-header-row h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .card-icon {
+        color: #38bdf8;
+        font-size: 18px;
+    }
+
+    .feature-card p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13.5px;
+        line-height: 1.5;
+    }
+
+    /* ----------------------------------------------------
+       STICKERS MASTER ENGINE (POSITIONING ON RED MARKS)
+       ---------------------------------------------------- */
+    .cloud-sticker {
+        position: absolute;
+        width: 40px; /* Perfectly scaled sticker size */
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+        z-index: 10;
+        filter: drop-shadow(0 4px 10px rgba(56, 189, 248, 0.25));
+    }
+
+    /* Animation assignments for realistic asynchronous movement */
+    .anim-type-a { animation: stickerFloatA 4s ease-in-out infinite; }
+    .anim-type-b { animation: stickerFloatB 3.5s ease-in-out infinite; }
+
+    /* Left Side: Button Red Marks */
+    .stk-btn-top-left { top: -22px; left: -22px; width: 35px; }
+    .stk-btn-bottom-right { bottom: -22px; right: -2px; width: 35px; }
+
+    /* Right Side: Cards Red Marks */
+    .stk-top-left { top: -18px; left: -18px; }
+    .stk-top-right { top: -18px; right: -18px; }
+    .stk-bottom-left { bottom: -18px; left: -18px; }
+    .stk-bottom-right { bottom: -18px; right: -18px; }
+
+    /* ----------------------------------------------------
+       SMOOTH NATURAL FLOATING KEYFRAMES
+       ---------------------------------------------------- */
+    @keyframes stickerFloatA {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-6px) rotate(-3deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes stickerFloatB {
+        0% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-5px) scale(1.05) rotate(4deg); }
+        100% { transform: translateY(0px) scale(1); }
+    }
+
+    /* Responsive Support Matrix */
+    @media (max-width: 1024px) {
+        .hero-premium-container { flex-direction: column; padding: 60px 4%; }
+        .hero-left-content { max-width: 100%; text-align: center; }
+        .hero-btn-group { justify-content: center; }
+        .hero-cards-grid { max-width: 100%; width: 100%; }
+        .cloud-sticker { width: 32px; }
+    }
+    @media (max-width: 640px) {
+        .hero-cards-grid { grid-template-columns: 1fr; }
+        .hero-left-content h1 { font-size: 36px !important; }
+    }
+</style>
+    <!-- =========================================================================
+     MINECRAFT/WEB HOSTING HERO SECTION WITH INFINITE MOVING LOGO SLIDER
+     ========================================================================= -->
+
+<style>
+    /* Hero Section Background & Layout Configuration */
+    .hero-premium-container {
+        width: 100%;
+        background-color: #070913; /* Deep premium dark canvas */
+        padding: 80px 6% 40px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        box-sizing: border-box;
+        font-family: system-ui, -apple-system, sans-serif;
+        color: #ffffff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Left Content Typography Map */
+    .hero-left-content {
+        max-width: 50%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-left-content h1 {
+        font-size: 52px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        line-height: 1.1 !important;
+        margin: 0 0 20px 0 !important;
+        letter-spacing: -1px;
+    }
+
+    .hero-left-content h1 span {
+        color: #38bdf8 !important; /* Premium Cyan Accent */
+        display: block;
+    }
+
+    .hero-left-content p {
+        color: #94a3b8;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 35px;
+        max-width: 90%;
+    }
+
+    /* Button Interfaces */
+    .hero-btn-group {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .get-started-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .btn-get-started {
+        background: #2563eb;
+        color: #ffffff;
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        transition: background 0.2s ease;
+    }
+
+    .btn-get-started:hover { background: #1d4ed8; }
+
+    .btn-learn-more {
+        color: #ffffff;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Right Grid: 2x2 Feature Layout */
+    .hero-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 48%;
+        position: relative;
+        z-index: 2;
+    }
+
+    .feature-card {
+        background: rgba(13, 16, 33, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+        padding: 24px;
+        border-radius: 12px;
+        position: relative;
+    }
+
+    .card-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .card-header-row h3 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .card-icon { color: #2563eb; font-size: 18px; }
+    .feature-card p { margin: 0; color: #64748b; font-size: 13px; line-height: 1.5; }
+
+    /* Corner Dynamic Stickers Engine */
+    .cloud-sticker {
+        position: absolute;
+        width: 38px;
+        height: auto;
+        pointer-events: none;
+        z-index: 10;
+        filter: drop-shadow(0 4px 8px rgba(56, 189, 248, 0.2));
+    }
+
+    .anim-float-v1 { animation: stickerFloat1 3.8s ease-in-out infinite; }
+    .anim-float-v2 { animation: stickerFloat2 3.2s ease-in-out infinite; }
+
+    .stk-btn-tl { top: -20px; left: -20px; width: 32px; }
+    .stk-btn-br { bottom: -20px; right: -5px; width: 32px; }
+    .stk-tl { top: -16px; left: -16px; }
+    .stk-br { bottom: -16px; right: -16px; }
+
+    @keyframes stickerFloat1 {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-5px) rotate(-2deg); }
+    }
+    @keyframes stickerFloat2 {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-4px) scale(1.04) rotate(3deg); }
+    }
+
+    /* ----------------------------------------------------
+       INFINITE LOOPING LOGO SLIDER SYSTEM (As seen in video)
+       ---------------------------------------------------- */
+    .partner-slider-section {
+        width: 100%;
+        background-color: #070913;
+        padding: 30px 0 60px 0;
+        overflow: hidden; /* Extra layout blocks hide */
+        position: relative;
+    }
+
+    /* Fade track masks for premium gradient edges */
+    .partner-slider-section::before,
+    .partner-slider-section::after {
+        content: "";
+        height: 100%;
+        width: 150px;
+        position: absolute;
+        top: 0;
+        z-index: 3;
+        pointer-events: none;
+    }
+    .partner-slider-section::before { left: 0; background: linear-gradient(to right, #070913, transparent); }
+    .partner-slider-section::after { right: 0; background: linear-gradient(to left, #070913, transparent); }
+
+    .slider-infinite-track {
+        display: flex;
+        width: calc(250px * 14); /* Dynamic math sizing for seamless loop node */
+        animation: scrollInfiniteTrack 25s linear infinite;
+    }
+
+    .slider-item-logo {
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slider-item-logo img {
+        height: 32px; /* Perfect scale height for standard brand vectors */
+        width: auto;
+        opacity: 0.35;
+        transition: opacity 0.3s ease;
+        filter: grayscale(100%) brightness(200%);
+    }
+
+    .slider-item-logo img:hover {
+        opacity: 0.8;
+        filter: grayscale(0%) brightness(100%);
+    }
+
+    /* Keyframes calculation for non-stop translation ticker */
+    @keyframes scrollInfiniteTrack {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 7)); } /* Exactly half track shift */
+    }
+
+    /* Responsive Grid Engine Scaling */
+    @media (max-width: 1024px) {
+        .hero-premium-container { flex-direction: column; text-align: center; padding-top: 40px; }
+        .hero-left-content, .hero-cards-grid { max-width: 100%; }
+        .hero-btn-group { justify-content: center; }
+        .slider-item-logo { width: 180px; }
+        @keyframes scrollInfiniteTrack {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-180px * 7)); }
+        }
+    }
+    @media (max-width: 640px) {
+        .hero-cards-grid { grid-template-columns: 1fr; }
+        .hero-left-content h1 { font-size: 38px !important; }
+    }
+</style>
+</script>
 </body>
 </html>
