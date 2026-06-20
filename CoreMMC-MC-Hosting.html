@@ -724,7 +724,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Center Content -->
         <div class="header-text-block">
             <span class="premium-sub-tag">AFFORDABLE PACKAGES</span>
-            <h2 class="premium-main-title">CoreMMC Hosting <span>Minecraft Plans</span></h2>
+            <h2 class="premium-main-title">CoreMMC Hosting <span>VPS Plans</span></h2>
         </div>
         
         <!-- Right Side: Show/Star Sticker (Shared Element) -->
@@ -1005,6 +1005,243 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 </body>
 </html>
+
+<div class="max-w-6xl w-full mx-auto flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    
+    <header class="mb-12 text-center flex flex-col items-center justify-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-3 tracking-tight uppercase">
+            🚀 CoreMMC <span id="hytale-header-accent" class="text-[#ff5722] transition-colors duration-300">Hytale Servers</span>
+        </h1>
+        <p class="text-gray-400 max-w-2xl text-sm md:text-base leading-relaxed">
+            Instant Setup, CoreMMC DDoS Protection, Full File Access & One-Click Mods Game Servers.
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10 w-full justify-center">
+        <div class="lg:col-span-2 flex flex-col items-center lg:items-start">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3 text-center lg:text-left w-full">1. Select Location</label>
+            <div id="hytale-location-container" class="flex flex-wrap gap-2.5 justify-center lg:justify-start w-full">
+                <button onclick="hytaleSelectLocation(this, 'mumbai')" class="hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform active:scale-95 hytale-active-loc">
+                    <span class="text-xs text-gray-500 font-bold uppercase">IN</span> <span class="text-white font-semibold">Mumbai, India</span>
+                </button>
+                <button class="flex items-center space-x-2 bg-[#0f1424]/20 border border-gray-900/50 text-gray-600 px-4 py-2 rounded-lg text-sm font-medium cursor-not-allowed opacity-40">
+                    <span class="text-xs font-bold uppercase">IN</span> <span>Hyderabad, India</span>
+                </button>
+                <button onclick="hytaleSelectLocation(this, 'delhi')" class="hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                    <span class="text-xs text-gray-500 font-bold uppercase">IN</span> <span>Delhi, India</span>
+                </button>
+                <button onclick="hytaleSelectLocation(this, 'singapore')" class="hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                    <span class="text-xs text-gray-500 font-bold uppercase">SG</span> <span>Singapore</span>
+                </button>
+                <button onclick="hytaleSelectLocation(this, 'frankfurt')" class="hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95">
+                    <span class="text-xs text-gray-500 font-bold uppercase">DE</span> <span>Frankfurt, Germany</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center lg:items-start">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3 text-center lg:text-left w-full">2. Choose Node Platform</label>
+            <div class="flex bg-[#0f1424]/50 p-1 rounded-xl border border-gray-800/80 w-full max-w-sm">
+                <button id="hytale-btn-amd" onclick="hytaleSwitchCPU('amd')" class="flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/20">
+                    <span>AMD Ryzen/EPYC</span>
+                </button>
+                <button id="hytale-btn-intel" onclick="hytaleSwitchCPU('intel')" class="flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white">
+                    <span>Intel Premium</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-6 w-full flex flex-col items-center">
+        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4 text-center lg:text-left w-full">3. Select Your Hytale Plan</label>
+        
+        <div id="hytale-plans-container" class="space-y-3 min-h-[420px] w-full flex flex-col justify-center">
+            </div>
+    </div>
+
+    <div id="hytale-pagination-wrapper" class="flex justify-center items-center space-x-2 mt-8 w-full">
+        </div>
+</div>
+
+<script>
+    // Hytale Hosting Plans Dataset
+    const hytalePlansData = {
+        amd: [
+            { emoji: '🌱', name: 'STARTER PLAN', ram: '4GB RAM', cpu: '200% CPU', ssd: 'NVMe SSD', price: '₹180', oldPrice: '₹249', support: 'Instant Setup' },
+            { emoji: '⚔️', name: 'ADVENTURER PLAN', ram: '6GB RAM', cpu: '300% CPU', ssd: 'NVMe SSD', price: '₹280', oldPrice: '₹399', support: 'Instant Setup' },
+            { emoji: '🧭', name: 'EXPLORER PLAN', ram: '8GB RAM', cpu: '400% CPU', ssd: 'NVMe SSD', price: '₹380', oldPrice: '₹499', support: 'Instant Setup' },
+            { emoji: '🧱', name: 'BUILDER PLAN', ram: '12GB RAM', cpu: '600% CPU', ssd: 'NVMe SSD', price: '₹520', oldPrice: '₹699', support: 'Instant Setup' },
+            { emoji: '👑', name: 'KINGDOM PLAN', ram: '16GB RAM', cpu: '800% CPU', ssd: 'NVMe SSD', price: '₹680', oldPrice: '₹899', support: 'Instant Setup' },
+            { emoji: '🏛️', name: 'EMPIRE PLAN', ram: '24GB RAM', cpu: '1200% CPU', ssd: 'NVMe SSD', price: '₹999', oldPrice: '₹1499', support: 'Instant Setup' }
+        ],
+        intel: [
+            { emoji: '🌱', name: 'STARTER PLAN (Intel)', ram: '4GB RAM', cpu: '200% CPU', ssd: 'NVMe SSD', price: '₹160', oldPrice: '₹220', support: 'Instant Setup' },
+            { emoji: '⚔️', name: 'ADVENTURER PLAN (Intel)', ram: '6GB RAM', cpu: '300% CPU', ssd: 'NVMe SSD', price: '₹260', oldPrice: '₹360', support: 'Instant Setup' },
+            { emoji: '🧭', name: 'EXPLORER PLAN (Intel)', ram: '8GB RAM', cpu: '400% CPU', ssd: 'NVMe SSD', price: '₹360', oldPrice: '₹460', support: 'Instant Setup' },
+            { emoji: '🧱', name: 'BUILDER PLAN (Intel)', ram: '12GB RAM', cpu: '600% CPU', ssd: 'NVMe SSD', price: '₹490', oldPrice: '₹650', support: 'Instant Setup' },
+            { emoji: '👑', name: 'KINGDOM PLAN (Intel)', ram: '16GB RAM', cpu: '800% CPU', ssd: 'NVMe SSD', price: '₹640', oldPrice: '₹850', support: 'Instant Setup' },
+            { emoji: '🏛️', name: 'EMPIRE PLAN (Intel)', ram: '24GB RAM', cpu: '1200% CPU', ssd: 'NVMe SSD', price: '₹950', oldPrice: '₹1350', support: 'Instant Setup' }
+        ]
+    };
+
+    let hytaleCurrentCPU = 'amd';
+    let hytaleCurrentPage = 1;
+    const hytaleItemsPerPage = 4;
+    let hytaleSelectedLocName = 'mumbai';
+
+    function hytaleUpdateLocationStyles() {
+        const activeBtn = document.querySelector('.hytale-active-loc');
+        const allButtons = document.querySelectorAll('.hytale-loc-btn');
+        
+        allButtons.forEach(btn => {
+            btn.className = "hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border border-gray-800/80 text-gray-400 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:border-gray-700 active:scale-95";
+        });
+
+        if (activeBtn) {
+            if (hytaleCurrentCPU === 'amd') {
+                activeBtn.className = "hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border-[#ff5722] text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform scale-105 style-shadow-orange hytale-active-loc";
+                activeBtn.style.boxShadow = "0 0 20px rgba(255, 87, 34, 0.4)";
+            } else {
+                activeBtn.className = "hytale-loc-btn flex items-center space-x-2 bg-[#0f1424] border-[#0083ff] text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform scale-105 style-shadow-blue hytale-active-loc";
+                activeBtn.style.boxShadow = "0 0 20px rgba(0, 131, 255, 0.4)";
+            }
+        }
+    }
+
+    function hytaleSelectLocation(element, locName) {
+        document.querySelectorAll('.hytale-loc-btn').forEach(btn => btn.classList.remove('hytale-active-loc'));
+        element.classList.add('hytale-active-loc');
+        hytaleSelectedLocName = locName;
+        hytaleUpdateLocationStyles();
+        hytaleRenderPlans();
+    }
+
+    function hytaleSwitchCPU(type) {
+        hytaleCurrentCPU = type;
+        hytaleCurrentPage = 1;
+        const btnAmd = document.getElementById('hytale-btn-amd');
+        const btnIntel = document.getElementById('hytale-btn-intel');
+        const headerAccent = document.getElementById('hytale-header-accent');
+
+        if (!btnAmd || !btnIntel || !headerAccent) return;
+
+        if (type === 'amd') {
+            btnAmd.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-[#ff5722] text-white shadow-lg shadow-[#ff5722]/20";
+            btnIntel.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white";
+            headerAccent.className = "text-[#ff5722] transition-colors duration-300";
+        } else {
+            btnIntel.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 bg-[#0083ff] text-white shadow-lg shadow-[#0083ff]/20";
+            btnAmd.className = "flex-1 flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 text-gray-400 hover:text-white";
+            headerAccent.className = "text-[#0083ff] transition-colors duration-300";
+        }
+
+        hytaleUpdateLocationStyles();
+        hytaleRenderPaginationControls();
+        hytaleRenderPlans();
+    }
+
+    function hytaleRenderPaginationControls() {
+        const wrapper = document.getElementById('hytale-pagination-wrapper');
+        if (!wrapper) return;
+        
+        const totalItems = hytalePlansData[hytaleCurrentCPU].length;
+        const totalPages = Math.ceil(totalItems / hytaleItemsPerPage);
+        
+        let html = ``;
+        html += `<button onclick="hytaleChangePage(${hytaleCurrentPage - 1})" ${hytaleCurrentPage === 1 ? 'disabled' : ''} class="p-2 rounded bg-[#0f1424] border border-gray-800 text-gray-500 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all">&lt;</button>`;
+        
+        const activeClass = hytaleCurrentCPU === 'amd' ? 'bg-[#ff5722] text-white' : 'bg-[#0083ff] text-white';
+        const inactiveClass = 'border border-gray-800 text-gray-400 hover:bg-[#0f1424]/50';
+        
+        for(let i = 1; i <= totalPages; i++) {
+            html += `<button onclick="hytaleChangePage(${i})" class="px-3.5 py-1.5 rounded text-sm font-bold transition-all duration-200 ${hytaleCurrentPage === i ? activeClass : inactiveClass}">${i}</button>`;
+        }
+
+        html += `<button onclick="hytaleChangePage(${hytaleCurrentPage + 1})" ${hytaleCurrentPage === totalPages ? 'disabled' : ''} class="p-2 rounded bg-[#0f1424] border border-gray-800 text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all">&gt;</button>`;
+        
+        wrapper.innerHTML = html;
+    }
+
+    function hytaleChangePage(pageNumber) {
+        const totalPages = Math.ceil(hytalePlansData[hytaleCurrentCPU].length / hytaleItemsPerPage);
+        if (pageNumber < 1 || pageNumber > totalPages) return;
+        hytaleCurrentPage = pageNumber;
+        hytaleRenderPaginationControls();
+        hytaleRenderPlans();
+    }
+
+    function hytaleRenderPlans() {
+        const container = document.getElementById('hytale-plans-container');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const allCpuPlans = hytalePlansData[hytaleCurrentCPU];
+        const startIndex = (hytaleCurrentPage - 1) * hytaleItemsPerPage;
+        const endIndex = startIndex + hytaleItemsPerPage;
+        const activePagePlans = allCpuPlans.slice(startIndex, endIndex);
+
+        activePagePlans.forEach((plan, index) => {
+            const textAccent = hytaleCurrentCPU === 'amd' ? 'text-[#ff5722]' : 'text-[#0083ff]';
+            const borderAccent = hytaleCurrentCPU === 'amd' ? 'hover:border-[#ff5722]/30' : 'hover:border-[#0083ff]/30';
+            const bgAccent = hytaleCurrentCPU === 'amd' ? 'bg-[#ff5722]' : 'bg-[#0083ff]';
+
+            const card = document.createElement('div');
+            card.className = `flex flex-col lg:flex-row items-start lg:items-center justify-between p-4 bg-[#0f1424]/50 border border-gray-800/60 rounded-xl gap-4 ${borderAccent} transition-all duration-300 opacity-0 transform translate-y-2 w-full`;
+            
+            card.innerHTML = `
+                <div class="flex items-center space-x-3.5 min-w-[190px]">
+                    <div class="w-9 h-9 rounded-lg bg-gray-950/80 border border-gray-800 flex items-center justify-center text-xl shadow-inner">
+                        ${plan.emoji}
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-white font-extrabold text-sm tracking-wide uppercase">${plan.name}</span>
+                        <span class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">${plan.support}</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full lg:w-auto flex-1 max-w-2xl text-left">
+                    <div class="bg-gray-950/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 text-[10px] uppercase font-semibold">RAM</span>
+                        <span class="text-gray-200 font-bold">${plan.ram}</span>
+                    </div>
+                    <div class="bg-gray-950/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 text-[10px] uppercase font-semibold">CPU</span>
+                        <span class="text-gray-200 font-bold">${plan.cpu}</span>
+                    </div>
+                    <div class="bg-gray-950/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 text-[10px] uppercase font-semibold">SSD</span>
+                        <span class="text-gray-200 font-bold">${plan.ssd}</span>
+                    </div>
+                    <div class="bg-gray-950/40 border border-gray-900/60 rounded-lg px-3 py-1.5 flex justify-between items-center text-xs">
+                        <span class="text-gray-500 text-[10px] uppercase font-semibold">DDoS</span>
+                        <span class="text-gray-200 font-bold text-[10px]">Protected</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between lg:justify-end w-full lg:w-auto gap-6 pt-2 lg:pt-0 border-t border-gray-800/30 lg:border-t-0">
+                    <div class="flex flex-col text-right">
+                        <span class="text-sm font-black tracking-wide ${textAccent}">${plan.price}/mo</span>
+                        <span class="text-[10px] text-gray-500 line-through font-bold">${plan.oldPrice}</span>
+                    </div>
+                    <button onclick="window.open('https://discord.com/channels/1331996056971641055/1457357769320698032')" class="w-full sm:w-auto px-5 py-2 rounded-lg text-xs font-bold text-white transition-all duration-300 ${bgAccent} hover:opacity-90 active:scale-95 whitespace-nowrap shadow-md">
+                        Buy via Ticket &gt;
+                    </button>
+                </div>
+            `;
+            
+            container.appendChild(card);
+            
+            setTimeout(() => {
+                card.classList.remove('opacity-0', 'translate-y-2');
+            }, index * 60);
+        });
+    }
+
+    // Safe Init for Hytale Section
+    document.addEventListener('DOMContentLoaded', () => {
+        hytaleSwitchCPU('amd');
+    });
+</script>
 
     <!-- -------------------------------- BRANDS LOGO BAR -------------------------------- -->
    <!-- INFINITE SLIDER COMPONENT (Exactly as running in your video) -->
